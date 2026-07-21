@@ -257,3 +257,48 @@ footer h4{
     opacity:.65;
 
 }
+/* ---------- ACCORDION ---------- */
+
+.accordion{
+
+    width:100%;
+
+    background:#124634;
+
+    color:#D4AF37;
+
+    cursor:pointer;
+
+    padding:20px;
+
+    font-size:1.3rem;
+
+    text-align:left;
+
+    border:none;
+
+    border-bottom:1px solid rgba(212,175,55,.2);
+
+    font-family:'Cinzel', serif;
+
+    transition:.3s;
+
+}
+
+.accordion:hover{
+
+    background:#16523d;
+
+}
+
+.panel{
+
+    display:none;
+
+    padding:25px;
+
+    background:#0f3629;
+
+    border-bottom:1px solid rgba(212,175,55,.15);
+
+}

@@ -182,3 +182,78 @@ nav a:hover{
     transform:translateY(-3px);
 
     box-shadow:0 10px 30px rgba(0,
+/* ---------- PREMIUM FOOTER ---------- */
+
+footer{
+
+    background:#08291f;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    border-top:1px solid rgba(212,175,55,.25);
+
+}
+
+.footer-crest{
+
+    width:90px;
+
+    margin-bottom:20px;
+
+    opacity:.95;
+
+}
+
+footer h4{
+
+    font-family:'Cinzel', serif;
+
+    color:#D4AF37;
+
+    letter-spacing:3px;
+
+    font-size:1.2rem;
+
+}
+
+.footer-motto{
+
+    margin-top:10px;
+
+    font-size:1.3rem;
+
+    color:#F7F4EA;
+
+}
+
+.footer-divider{
+
+    width:120px;
+
+    height:1px;
+
+    background:#D4AF37;
+
+    margin:28px auto;
+
+}
+
+.footer-text{
+
+    color:#d9d4c5;
+
+    letter-spacing:1px;
+
+}
+
+.copyright{
+
+    margin-top:35px;
+
+    font-size:.9rem;
+
+    opacity:.65;
+
+}

@@ -1,5 +1,23 @@
-// Stirling Hunt House Ltd
+const accordions = document.querySelectorAll(".accordion");
 
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Welcome to Stirling Hunt House Ltd");
+accordions.forEach(button => {
+
+button.addEventListener("click", function(){
+
+this.classList.toggle("active");
+
+const panel = this.nextElementSibling;
+
+if(panel.style.display === "block"){
+
+panel.style.display = "none";
+
+}else{
+
+panel.style.display = "block";
+
+}
+
+});
+
 });

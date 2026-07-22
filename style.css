@@ -299,7 +299,7 @@ footer h4{
     border-bottom:1px solid rgba(212,175,55,.15);
 
 }
-.collapsible {
+.section-title {
     width: 100%;
     background: none;
     border: none;
@@ -308,14 +308,14 @@ footer h4{
     cursor: pointer;
 }
 
-.collapsible h2 {
+.section-title {
     color: #c8a44d;
     font-size: 2.3rem;
     font-family: Georgia, serif;
     margin: 20px 0;
 }
 
-.collapsible:hover h2 {
+.section-title:hover {
     color: #d8b85d;
 }
 .section-content {

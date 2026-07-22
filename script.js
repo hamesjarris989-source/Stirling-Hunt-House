@@ -1,23 +1,14 @@
-const accordions = document.querySelectorAll(".accordion");
+function toggleSection(title) {
 
-accordions.forEach(button => {
+    const content = title.nextElementSibling;
+    const arrow = title.querySelector(".arrow");
 
-button.addEventListener("click", function(){
-
-this.classList.toggle("active");
-
-const panel = this.nextElementSibling;
-
-if(panel.style.display === "block"){
-
-panel.style.display = "none";
-
-}else{
-
-panel.style.display = "block";
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        arrow.textContent = "▸";
+    } else {
+        content.style.display = "block";
+        arrow.textContent = "▾";
+    }
 
 }
-
-});
-
-});

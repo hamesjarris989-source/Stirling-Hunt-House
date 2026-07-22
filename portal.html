@@ -1,70 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Institute Portal</title>
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<header class="hero">
-
-<h1>Welcome</h1>
-
-<h2>The Institute</h2>
-
-<p class="subtitle">
-
-Access Granted
-
-</p>
-
-</header>
-
-<section class="publications-list">
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Member Services</h3>
-
-<p>Select an area of the Institute Portal.</p>
-
-<a class="button" href="research.html">Research Library</a>
-
-<br><br>
-
-<a class="button" href="submit.html">Submit Research</a>
-
-<br><br>
-
-<a class="button" href="messages.html">Member Messages</a>
-
-<br><br>
-
-<a class="button" href="directory.html">Member Directory</a>
-
-</div>
-
-</div>
-
-</section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-if (sessionStorage.getItem("authenticated") !== "true") {
-    window.location.href = "institute.html";
+const supabase = window.supabase.createClient(
+  "https://ayvcbbgtlzxifjxahjul.supabase.co",
+  "YOUR_PUBLISHABLE_KEY"
+);
+
+async function checkUser() {
+
+  const { data } = await supabase.auth.getSession();
+
+  if (!data.session) {
+    window.location.href = "fellows.html";
+  }
+
 }
+
+checkUser();
 </script>
-
-</body>
-
-</html>

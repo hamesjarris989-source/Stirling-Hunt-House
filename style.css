@@ -321,3 +321,12 @@ footer h4{
 .section-content {
     display: none;
 }
+.publications-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.publications-list h3 {
+    margin-bottom: 40px;
+}

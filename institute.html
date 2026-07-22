@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -61,42 +63,46 @@ Sign In
 
 <script>
 
-const supabaseUrl = "https://ayvcbbgtlzxifjxahjul.supabase.co";
-const supabaseKey = "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv";
-
 const supabase = window.supabase.createClient(
-    supabaseUrl,
-    supabaseKey
+    "https://ayvcbbgtlzxifjxahjul.supabase.co",
+    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
 );
 
-console.log("Supabase client created");
-
-document.getElementById("loginButton").addEventListener("click", login);
+document
+    .getElementById("loginButton")
+    .addEventListener("click", login);
 
 async function login() {
 
-    alert("Login started");
+    const message = document.getElementById("message");
+    message.textContent = "Signing in...";
 
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
-    const message = document.getElementById("message");
 
-    message.innerHTML = "Signing in...";
+    if (email === "" || password === "") {
+        message.textContent = "Please enter your email and password.";
+        return;
+    }
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password
     });
 
     if (error) {
-        alert(error.message);
-        message.innerHTML = error.message;
+        message.textContent = error.message;
         return;
     }
 
-    alert("Login successful");
-
     window.location.href = "portal.html";
+
+}
+
+</script>
+
+</body>
+</html>    window.location.href = "portal.html";
 
 }
 

@@ -362,3 +362,14 @@ footer h4{
     line-height: 1.7;
     margin-bottom: 20px;
 }
+
+.publications-list {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+.publications-list h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}

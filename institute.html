@@ -54,16 +54,21 @@ Enter
 </header>
 
 <script>
-function login(){
+async function login(){
 
 let password=document.getElementById("password").value;
 
-if(password==="veritatem"){
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+const { data, error } = await supabase.auth.signInWithPassword({
+  email: email,
+  password: password
+});
 
-    sessionStorage.setItem("authenticated", "true");
-    window.location.href="portal.html";
-}else{
-    document.getElementById("message").innerHTML="Incorrect password";
+if (error) {
+  document.getElementById("message").innerHTML = error.message;
+} else {
+  window.location.href = "portal.html";
 }
 }
 </script>

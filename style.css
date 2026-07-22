@@ -299,3 +299,22 @@ footer h4{
     border-bottom:1px solid rgba(212,175,55,.15);
 
 }
+.collapsible {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.collapsible h2 {
+    color: #c8a44d;
+    font-size: 2.3rem;
+    font-family: Georgia, serif;
+    margin: 20px 0;
+}
+
+.collapsible:hover h2 {
+    color: #d8b85d;
+}

@@ -74,26 +74,28 @@ document
 
 async function login() {
 
-    const message = document.getElementById("message");
-    message.textContent = "Signing in...";
+    alert("Login function started");
 
+    const message = document.getElementById("message");
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
-    if (email === "" || password === "") {
-        message.textContent = "Please enter your email and password.";
-        return;
-    }
+    message.textContent = "Signing in...";
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password
     });
 
+    alert("Response received");
+
     if (error) {
+        alert("ERROR: " + error.message);
         message.textContent = error.message;
         return;
     }
+
+    alert("SUCCESS");
 
     window.location.href = "portal.html";
 

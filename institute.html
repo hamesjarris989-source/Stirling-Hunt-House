@@ -63,45 +63,53 @@ Sign In
 
 <script>
 
-const supabase = window.supabase.createClient(
-    "https://ayvcbbgtlzxifjxahjul.supabase.co",
-    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
-);
+document.addEventListener("DOMContentLoaded", () => {
 
-document
-    .getElementById("loginButton")
-    .addEventListener("click", login);
+    const supabase = window.supabase.createClient(
+        "https://ayvcbbgtlzxifjxahjul.supabase.co",
+        "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+    );
 
-async function login() {
+    document.getElementById("loginButton").addEventListener("click", async () => {
 
-    alert("Login function started");
+        const message = document.getElementById("message");
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
 
-    const message = document.getElementById("message");
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+        message.textContent = "Signing in...";
 
-    message.textContent = "Signing in...";
+        if (!email || !password) {
+            message.textContent = "Please enter your email and password.";
+            return;
+        }
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password
+        try {
+
+            const { error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                message.textContent = error.message;
+                return;
+            }
+
+            window.location.href = "portal.html";
+
+        } catch (err) {
+
+            console.error(err);
+            message.textContent = "Unable to connect to the authentication service.";
+
+        }
+
     });
 
-    alert("Response received");
-
-    if (error) {
-        alert("ERROR: " + error.message);
-        message.textContent = error.message;
-        return;
-    }
-
-    alert("SUCCESS");
-
-    window.location.href = "portal.html";
-
-}
+});
 
 </script>
 
 </body>
+
 </html>

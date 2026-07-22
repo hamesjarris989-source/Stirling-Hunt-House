@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Institute | Stirling Hunt House Ltd</title>
+
+<title>Fellows' Portal | Stirling Hunt House</title>
 
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -25,62 +28,80 @@ STIRLING HUNT HOUSE
 
 <header class="hero">
 
-<h1>Fellows</h1>
+<h1>FELLOWS' PORTAL</h1>
 
-<h2>Members' Portal</h2>
+<h2>Stirling Hunt House</h2>
 
 <p class="subtitle">
-Authorised members only.
+Access is restricted to Fellows of the Society.
 </p>
 
 <input
 type="email"
 id="email"
-placeholder="Email">
+placeholder="Email address">
 
 <br><br>
 
 <input
 type="password"
 id="password"
-placeholder="Enter password">
+placeholder="Password">
 
 <br><br>
 
-<button class="button" onclick="alert('Button clicked'); login();">
-    Enter
+<button class="button" id="loginButton">
+Sign In
 </button>
 
 <p id="message"></p>
 
 </header>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-alert(typeof window.supabase);
+
+const supabaseUrl = "https://ayvcbbgtlzxifjxahjul.supabase.co";
+const supabaseKey = "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv";
 
 const supabase = window.supabase.createClient(
-  "https://ayvcbbgtlzxifjxahjul.supabase.co",
-  "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+    supabaseUrl,
+    supabaseKey
 );
 
-async function login() {
-alert("Login function started");
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+document.getElementById("loginButton").addEventListener("click", login);
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password
-  });
+async function login(){
 
-  if (error) {
-    document.getElementById("message").innerHTML = error.message;
-  } else {
-    window.location.href = "portal.html";
-  }
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const message =
+        document.getElementById("message");
+
+    message.innerHTML = "Signing in...";
+
+    const { error } =
+        await supabase.auth.signInWithPassword({
+
+            email,
+            password
+
+        });
+
+    if(error){
+
+        message.innerHTML = error.message;
+        return;
+
+    }
+
+    window.location.href="portal.html";
+
 }
+
 </script>
 
 </body>

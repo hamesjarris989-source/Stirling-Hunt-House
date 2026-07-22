@@ -330,3 +330,35 @@ footer h4{
 .publications-list h3 {
     margin-bottom: 40px;
 }
+
+
+.publications-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: #133c30;
+    border: 1px solid #d4af37;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 750px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card h4 {
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.card p {
+    line-height: 1.7;
+    margin-bottom: 20px;
+}

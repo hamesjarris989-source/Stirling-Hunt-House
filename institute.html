@@ -54,6 +54,12 @@ function login(){
 let password=document.getElementById("password").value;
 
 if(password==="veritatem"){
+
+    sessionStorage.setItem("authenticated", "true");
+    window.location.href="portal.html";
+}else{
+    document.getElementById("message").innerHTML="Incorrect password";
+}
 window.location.href="portal.html";
 }else{
 document.getElementById("message").innerHTML="Incorrect password";

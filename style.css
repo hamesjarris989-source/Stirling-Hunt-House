@@ -259,43 +259,40 @@ footer h4{
 }
 /* ---------- ACCORDION ---------- */
 
-.accordion{
-
-    width:100%;
-
-    background:#124634;
-
-    color:#D4AF37;
-
-    cursor:pointer;
-
-    padding:20px;
-
-    font-size:1.3rem;
-
-    text-align:left;
-
-    border:none;
-
-    border-bottom:1px solid rgba(212,175,55,.2);
-
-    font-family:'Cinzel', serif;
-
-    transition:.3s;
-
+.accordion {
+    width: 100%;
+    background: transparent;
+    color: #D4AF37;
+    cursor: pointer;
+    padding: 18px 0;
+    border: none;
+    border-top: 1px solid rgba(212,175,55,.25);
+    text-align: left;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.accordion:hover{
-
-    background:#16523d;
-
+.accordion:hover {
+    color: #f1d57a;
 }
 
-.panel{
+.panel {
+    display: none;
+    padding: 0 0 25px 0;
+}
 
-    display:none;
+.accordion::after {
+    content: "+";
+    float: right;
+    color: #D4AF37;
+    font-size: 2rem;
+}
 
-    padding:25px;
+.accordion.active::after {
+    content: "−";
+}
 
     background:#0f3629;
 

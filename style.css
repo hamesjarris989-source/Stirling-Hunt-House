@@ -318,3 +318,6 @@ footer h4{
 .collapsible:hover h2 {
     color: #d8b85d;
 }
+.section-content {
+    display: none;
+}

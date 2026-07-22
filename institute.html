@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Institute | Stirling Hunt House Ltd</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo-text">
+STIRLING HUNT HOUSE
+</div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="publications.html">Publications</a></li>
+</ul>
+
+</nav>
+
+<header class="hero">
+
+<h1>THE INSTITUTE</h1>
+
+<h2>Members' Portal</h2>
+
+<p class="subtitle">
+Authorised members only.
+</p>
+
+<input
+type="password"
+id="password"
+placeholder="Enter password">
+
+<br><br>
+
+<button class="button" onclick="login()">
+Enter
+</button>
+
+<p id="message"></p>
+
+</header>
+
+<script>
+function login(){
+
+let password=document.getElementById("password").value;
+
+if(password==="veritatem"){
+window.location.href="portal.html";
+}else{
+document.getElementById("message").innerHTML="Incorrect password";
+}
+
+}
+</script>
+
+</body>
+</html>

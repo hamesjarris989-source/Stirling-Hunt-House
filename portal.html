@@ -29,6 +29,12 @@ Access Granted
 
 </header>
 
+<script>
+if (sessionStorage.getItem("authenticated") !== "true") {
+    window.location.href = "institute.html";
+}
+</script>
+
 </body>
 
 </html>

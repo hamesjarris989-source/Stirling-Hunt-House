@@ -1,25 +1,64 @@
-/* ---------- GLOBAL ---------- */
+/*==================================================
+  STIRLING HUNT HOUSE
+  VERSION 2.0
+==================================================*/
+
+
+/* ---------- COLOUR PALETTE ---------- */
+
+:root{
+
+    --green:#0B3D2E;
+    --green-dark:#08291F;
+    --green-light:#133C30;
+
+    --gold:#D4AF37;
+    --gold-light:#E7C35A;
+
+    --cream:#F7F4EA;
+
+}
+
+
+/* ---------- RESET ---------- */
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+
 }
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
 body{
 
-    background:#0B3D2E;
-    color:#F7F4EA;
+    background:var(--green);
 
-    font-family:'Cormorant Garamond', serif;
+    color:var(--cream);
+
+    font-family:"Cormorant Garamond",serif;
 
     line-height:1.8;
 
 }
+
+
+/* ---------- LINKS ---------- */
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
 
 /* ---------- NAVIGATION ---------- */
 
@@ -29,7 +68,11 @@ nav{
 
     top:0;
 
+    left:0;
+
     width:100%;
+
+    padding:18px 8%;
 
     display:flex;
 
@@ -37,29 +80,35 @@ nav{
 
     align-items:center;
 
-    padding:20px 8%;
-
-    background:rgba(8,30,22,.94);
-
-    border-bottom:1px solid rgba(201,162,39,.35);
+    background:rgba(8,41,31,.96);
 
     backdrop-filter:blur(12px);
 
-    z-index:999;
+    border-bottom:1px solid rgba(212,175,55,.20);
+
+    z-index:1000;
 
 }
+
+
+/* ---------- BRAND ---------- */
 
 .logo-text{
 
-    font-family:'Cinzel', serif;
+    font-family:"Cormorant Garamond",serif;
 
-    font-size:1.1rem;
+    font-size:1.65rem;
 
-    letter-spacing:3px;
+    font-weight:600;
 
-    color:#D4AF37;
+    letter-spacing:2px;
+
+    color:var(--gold);
 
 }
+
+
+/* ---------- MENU ---------- */
 
 nav ul{
 
@@ -67,33 +116,38 @@ nav ul{
 
     display:flex;
 
-    gap:35px;
+    gap:34px;
+
+}
+
+nav li{
+
+    display:inline-block;
 
 }
 
 nav a{
 
-    color:#F7F4EA;
+    color:var(--cream);
 
-    text-decoration:none;
+    font-size:1.15rem;
 
     transition:.3s;
-
-    font-size:1.1rem;
 
 }
 
 nav a:hover{
 
-    color:#D4AF37;
+    color:var(--gold);
 
 }
+
 
 /* ---------- HERO ---------- */
 
 .hero{
 
-    min-height: 50vh; 
+    min-height:100vh;
 
     display:flex;
 
@@ -105,41 +159,90 @@ nav a:hover{
 
     text-align:center;
 
-    padding:60px 20px 30px;
+    padding:120px 20px 80px;
 
 }
+
+
+/* ---------- CREST ---------- */
 
 .crest{
 
-    width:190px;
+    width:240px;
 
-    margin-bottom:30px;
+    margin-bottom:35px;
 
-    filter:drop-shadow(0 10px 25px rgba(0,0,0,.35));
+    filter:drop-shadow(0 12px 28px rgba(0,0,0,.40));
+
+    transition:.35s;
 
 }
+
+.crest:hover{
+
+    transform:scale(1.04);
+
+}
+
+
+/* ---------- MAIN TITLE ---------- */
 
 .hero h1{
 
-    font-family:'Cinzel', serif;
+    font-family:"Cormorant Garamond",serif;
 
-    font-size:3.6rem;
+    font-size:4rem;
 
-    color:#D4AF37;
+    font-weight:600;
 
-    letter-spacing:4px;
+    letter-spacing:3px;
+
+    color:var(--gold);
 
 }
 
+
+/* ---------- MOTTO ---------- */
+
 .hero h2{
 
-    margin-top:10px;
-
-    font-style:italic;
+    margin-top:12px;
 
     font-size:2rem;
 
+    font-style:italic;
+
     font-weight:300;
+
+}
+
+
+/* ---------- DIVIDER ---------- */
+
+.hero-divider{
+
+    width:120px;
+
+    height:2px;
+
+    background:var(--gold);
+
+    margin:28px auto;
+
+}
+
+
+/* ---------- SUBTITLE ---------- */
+
+.subtitle{
+
+    margin-top:25px;
+
+    max-width:720px;
+
+    font-size:1.35rem;
+
+    opacity:.92;
 
 }
 

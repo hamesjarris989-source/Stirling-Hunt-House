@@ -34,40 +34,38 @@ const supabase = window.supabase.createClient(
     "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
 );
 
-(async () => {
+async function logout() {
+
+    alert("Logout page loaded.");
 
     try {
+
+        alert("Calling Supabase signOut...");
 
         const { error } = await supabase.auth.signOut({
             scope: "local"
         });
 
+        alert("Supabase returned.");
+
         if (error) {
-            document.body.innerHTML = `
-                <header class="hero">
-                    <h1>Logout Failed</h1>
-                    <p class="subtitle">${error.message}</p>
-                    <a class="button" href="portal.html">Return to Portal</a>
-                </header>
-            `;
+            alert("Logout error: " + error.message);
             return;
         }
+
+        alert("Redirecting to Institute...");
 
         window.location.replace("institute.html");
 
     } catch (err) {
 
-        document.body.innerHTML = `
-            <header class="hero">
-                <h1>Unexpected Error</h1>
-                <p class="subtitle">${err.message}</p>
-                <a class="button" href="portal.html">Return to Portal</a>
-            </header>
-        `;
+        alert("Unexpected error: " + err.message);
 
     }
 
-})();
+}
+
+logout();
 
 </script>
 

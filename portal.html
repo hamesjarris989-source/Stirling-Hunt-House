@@ -1,125 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Fellows' Portal | Stirling Hunt House</title>
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<header class="hero">
-
-<h1>Welcome</h1>
-
-<h2>Fellows' Portal</h2>
-
-<p class="subtitle">
-Access Granted
-</p>
-
-</header>
-
-<section class="publications-list">
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Library</h3>
-
-<p>
-Select an area of the Fellows' Portal.
-</p>
-
-<a class="button" href="research.html">
-Library
-</a>
-
-<br><br>
-
-<a class="button" href="submit.html">
-Submit a Paper
-</a>
-
-<br><br>
-
-<a class="button" href="messages.html">
-Common Room
-</a>
-
-<br><br>
-
-<a class="button" href="directory.html">
-Fellows
-</a>
-
-<br><br>
-
-<button id="logoutButton" class="button">
-Sign Out
-</button>
-
-</div>
-
-</div>
-
-</section>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 const supabase = window.supabase.createClient(
-
     "https://ayvcbbgtlzxifjxahjul.supabase.co",
-
     "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
-
 );
 
-async function checkUser() {
+(async function () {
 
-    const { data } = await supabase.auth.getSession();
+    const { data: { session } } = await supabase.auth.getSession();
 
-    if (!data.session) {
-
-        window.location.href = "fellows.html";
-
-    }
-
-}
-
-checkUser();
-
-document
-    .getElementById("logoutButton")
-    .addEventListener("click", logout);
-
-async function logout() {
-
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-        alert("Logout failed: " + error.message);
+    if (!session) {
+        window.location.replace("institute.html");
         return;
     }
 
-    alert("You have been signed out.");
+})();
 
-    window.location.href = "institute.html";
+document.getElementById("logoutButton").onclick = async function () {
 
-}
+    this.disabled = true;
+    this.innerText = "Signing Out...";
+
+    try {
+
+        await supabase.auth.signOut();
+
+    } catch (e) {
+        alert("Logout failed");
+    }
+
+    window.location.replace("institute.html");
+
+};
 
 </script>
-
-</body>
-
-</html>

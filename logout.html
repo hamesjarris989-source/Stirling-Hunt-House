@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signing Out | Stirling Hunt House</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<header class="hero">
+
+<h1>Signing Out...</h1>
+
+<p class="subtitle">
+Please wait while your session is ended.
+</p>
+
+</header>
+
+<script>
+
+const supabase = window.supabase.createClient(
+    "https://ayvcbbgtlzxifjxahjul.supabase.co",
+    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+);
+
+async function logout() {
+
+    try {
+
+        const { error } = await supabase.auth.signOut();
+
+        if (error) {
+            document.body.innerHTML =
+                "<h2 style='text-align:center;margin-top:100px;'>Logout failed.<br>" +
+                error.message +
+                "</h2>";
+            return;
+        }
+
+        window.location.replace("institute.html");
+
+    } catch (err) {
+
+        document.body.innerHTML =
+            "<h2 style='text-align:center;margin-top:100px;'>An unexpected error occurred.</h2>";
+
+    }
+
+}
+
+logout();
+
+</script>
+
+</body>
+
+</html>

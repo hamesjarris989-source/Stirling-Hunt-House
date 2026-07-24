@@ -35,21 +35,37 @@ Access Granted
 
 <h3>Library</h3>
 
-<p>Select an area of the Fellows' Portal.</p>
+<p>
+Select an area of the Fellows' Portal.
+</p>
 
-<a class="button" href="research.html">Library</a>
-
-<br><br>
-
-<a class="button" href="submit.html">Submit a Paper</a>
-
-<br><br>
-
-<a class="button" href="messages.html">Common Room</a>
+<a class="button" href="research.html">
+Library
+</a>
 
 <br><br>
 
-<a class="button" href="directory.html">Fellows</a>
+<a class="button" href="submit.html">
+Submit a Paper
+</a>
+
+<br><br>
+
+<a class="button" href="messages.html">
+Common Room
+</a>
+
+<br><br>
+
+<a class="button" href="directory.html">
+Fellows
+</a>
+
+<br><br>
+
+<a class="button" href="logout.html">
+Sign Out
+</a>
 
 </div>
 
@@ -62,8 +78,8 @@ Access Granted
 <script>
 
 const supabase = window.supabase.createClient(
-  "https://ayvcbbgtlzxifjxahjul.supabase.co",
-  "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+    "https://ayvcbbgtlzxifjxahjul.supabase.co",
+    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
 );
 
 async function checkUser() {
@@ -71,7 +87,9 @@ async function checkUser() {
     const { data } = await supabase.auth.getSession();
 
     if (!data.session) {
+
         window.location.href = "institute.html";
+
     }
 
 }

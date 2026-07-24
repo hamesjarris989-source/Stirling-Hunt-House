@@ -22,7 +22,7 @@
 <h1>Signing Out...</h1>
 
 <p class="subtitle">
-Please wait while your session is ended.
+Please wait while your secure session is ended.
 </p>
 
 </header>
@@ -34,32 +34,13 @@ const supabase = window.supabase.createClient(
     "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
 );
 
-async function logout() {
+(async () => {
 
-    try {
+    await supabase.auth.signOut();
 
-        const { error } = await supabase.auth.signOut();
+    window.location.href = "institute.html";
 
-        if (error) {
-            document.body.innerHTML =
-                "<h2 style='text-align:center;margin-top:100px;'>Logout failed.<br>" +
-                error.message +
-                "</h2>";
-            return;
-        }
-
-        window.location.replace("institute.html");
-
-    } catch (err) {
-
-        document.body.innerHTML =
-            "<h2 style='text-align:center;margin-top:100px;'>An unexpected error occurred.</h2>";
-
-    }
-
-}
-
-logout();
+})();
 
 </script>
 

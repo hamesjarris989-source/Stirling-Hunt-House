@@ -36,9 +36,36 @@ const supabase = window.supabase.createClient(
 
 (async () => {
 
-    await supabase.auth.signOut();
+    try {
 
-    window.location.href = "institute.html";
+        const { error } = await supabase.auth.signOut({
+            scope: "local"
+        });
+
+        if (error) {
+            document.body.innerHTML = `
+                <header class="hero">
+                    <h1>Logout Failed</h1>
+                    <p class="subtitle">${error.message}</p>
+                    <a class="button" href="portal.html">Return to Portal</a>
+                </header>
+            `;
+            return;
+        }
+
+        window.location.replace("institute.html");
+
+    } catch (err) {
+
+        document.body.innerHTML = `
+            <header class="hero">
+                <h1>Unexpected Error</h1>
+                <p class="subtitle">${err.message}</p>
+                <a class="button" href="portal.html">Return to Portal</a>
+            </header>
+        `;
+
+    }
 
 })();
 

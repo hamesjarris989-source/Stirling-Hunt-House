@@ -29,6 +29,8 @@ Please wait while your secure session is ended.
 
 <script>
 
+alert("Logout page loaded.");
+
 const supabase = window.supabase.createClient(
     "https://ayvcbbgtlzxifjxahjul.supabase.co",
     "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
@@ -36,30 +38,31 @@ const supabase = window.supabase.createClient(
 
 async function logout() {
 
-    alert("Logout page loaded.");
+    alert("Supabase client created.");
 
     try {
 
-        alert("Calling Supabase signOut...");
+        alert("Calling signOut()...");
 
         const { error } = await supabase.auth.signOut({
             scope: "local"
         });
 
-        alert("Supabase returned.");
+        alert("signOut() completed.");
 
         if (error) {
             alert("Logout error: " + error.message);
             return;
         }
 
-        alert("Redirecting to Institute...");
+        alert("Redirecting to institute.html...");
 
         window.location.replace("institute.html");
 
     } catch (err) {
 
-        alert("Unexpected error: " + err.message);
+        alert("Unexpected error:");
+        alert(err.message);
 
     }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -34,21 +35,37 @@ Access Granted
 
 <h3>Library</h3>
 
-<p>Select an area of the Fellows' Portal.</p>
+<p>
+Select an area of the Fellows' Portal.
+</p>
 
-<a class="button" href="research.html">Library</a>
-
-<br><br>
-
-<a class="button" href="submit.html">Submit a Paper</a>
-
-<br><br>
-
-<a class="button" href="messages.html">Common Room</a>
+<a class="button" href="research.html">
+Library
+</a>
 
 <br><br>
 
-<a class="button" href="directory.html">Fellows</a>
+<a class="button" href="submit.html">
+Submit a Paper
+</a>
+
+<br><br>
+
+<a class="button" href="messages.html">
+Common Room
+</a>
+
+<br><br>
+
+<a class="button" href="directory.html">
+Fellows
+</a>
+
+<br><br>
+
+<button id="logoutButton" class="button">
+Sign Out
+</button>
 
 </div>
 
@@ -59,23 +76,48 @@ Access Granted
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
 const supabase = window.supabase.createClient(
-  "https://ayvcbbgtlzxifjxahjul.supabase.co",
-  "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+
+    "https://ayvcbbgtlzxifjxahjul.supabase.co",
+
+    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+
 );
 
 async function checkUser() {
 
-  const { data } = await supabase.auth.getSession();
+    const { data } = await supabase.auth.getSession();
 
-  if (!data.session) {
-    window.location.href = "institute.html";
-  }
+    if (!data.session) {
+
+        window.location.href = "fellows.html";
+
+    }
 
 }
 
 checkUser();
+
+document
+    .getElementById("logoutButton")
+    .addEventListener("click", logout);
+
+async function logout() {
+
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+        alert(error.message);
+        return;
+    }
+
+    window.location.href = "fellows.html";
+
+}
+
 </script>
 
 </body>
+
 </html>

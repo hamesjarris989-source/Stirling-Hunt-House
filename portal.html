@@ -108,11 +108,13 @@ async function logout() {
     const { error } = await supabase.auth.signOut();
 
     if (error) {
-        alert(error.message);
+        alert("Logout failed: " + error.message);
         return;
     }
 
-    window.location.href = "fellows.html";
+    alert("You have been signed out.");
+
+    window.location.href = "institute.html";
 
 }
 

@@ -11,22 +11,69 @@
 
 <link rel="stylesheet" href="style.css">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
 
 <body>
 
 <header class="hero">
 
-<h1>LOGOUT TEST</h1>
+<h1>Signing Out...</h1>
 
 <p class="subtitle">
-If you can see this message, the page is loading correctly.
+Please wait while your secure session is ended.
 </p>
 
 </header>
 
 <script>
-alert("JavaScript is working!");
+
+alert("Step 1: JavaScript works.");
+
+const supabase = window.supabase.createClient(
+    "https://ayvcbbgtlzxifjxahjul.supabase.co",
+    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+);
+
+alert("Step 2: Supabase client created.");
+
+async function testSupabase() {
+
+    alert("Step 3: Checking current session...");
+
+    try {
+
+        const { data, error } = await supabase.auth.getSession();
+
+        if (error) {
+
+            alert("Session error: " + error.message);
+
+            return;
+
+        }
+
+        if (data.session) {
+
+            alert("Step 4: Session found.");
+
+        } else {
+
+            alert("Step 4: No session found.");
+
+        }
+
+    } catch (err) {
+
+        alert("Unexpected error: " + err.message);
+
+    }
+
+}
+
+testSupabase();
+
 </script>
 
 </body>

@@ -15,61 +15,498 @@
 
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
 
-    margin:0;
     background:#103B31;
+
     color:#F6F2E8;
+
     font-family:'EB Garamond', serif;
+
+    line-height:1.7;
 
 }
 
 .container{
 
-    width:90%;
-    max-width:900px;
+    width:92%;
+
+    max-width:980px;
+
     margin:60px auto;
+
+}
+
+header{
+
+    text-align:center;
+
+    margin-bottom:50px;
 
 }
 
 h1{
 
-    text-align:center;
-    font-size:58px;
     color:#D4AF37;
-    margin-bottom:8px;
-    letter-spacing:1px;
+
+    font-size:60px;
+
+    letter-spacing:2px;
+
+    margin-bottom:6px;
+
+    font-weight:600;
 
 }
 
 h2{
 
-    text-align:center;
-    font-size:30px;
+    font-size:34px;
+
     font-weight:400;
-    margin-top:0;
-    margin-bottom:15px;
+
+    margin-bottom:18px;
 
 }
 
 .motto{
 
-    text-align:center;
-    font-style:italic;
     color:#D9CDAA;
-    font-size:20px;
-    margin-bottom:50px;
+
+    font-size:22px;
+
+    font-style:italic;
 
 }
 
 .panel{
 
-    background:#174739;
+    background:#18483A;
 
     border:1px solid #B8912D;
 
     border-radius:18px;
 
-    padding:35
+    padding:35px;
+
+    margin-bottom:35px;
+
+}
+
+.panel h3{
+
+    color:#D4AF37;
+
+    font-size:30px;
+
+    margin-bottom:25px;
+
+    font-weight:500;
+
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:20px;
+
+    background:#F6F2E8;
+
+    border:1px solid #D8C79C;
+
+    border-radius:8px;
+
+    color:#103B31;
+
+    font-family:'EB Garamond', serif;
+
+    font-size:20px;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:none;
+
+    border-color:#D4AF37;
+
+}
+
+textarea{
+
+    min-height:220px;
+
+    resize:vertical;
+
+}
+
+.publishRow{
+
+    text-align:right;
+
+}
+
+button{
+
+    background:#D4AF37;
+
+    color:#103B31;
+
+    border:none;
+
+    padding:14px 40px;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    font-family:'EB Garamond', serif;
+
+    font-size:20px;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    background:#E4C252;
+
+}
+
+.subjects{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:15px;
+
+}
+
+.subject{
+
+    border:1px solid #B8912D;
+
+    border-radius:10px;
+
+    padding:16px;
+
+    text-align:center;
+
+    transition:.25s;
+
+    cursor:pointer;
+
+}
+
+.subject:hover{
+
+    background:#1F5645;
+
+}
+
+.loading{
+
+    text-align:center;
+
+    color:#D9CDAA;
+
+    font-size:22px;
+
+    padding:40px;
+
+}
+
+.discussion{
+
+    border-bottom:1px solid rgba(212,175,55,.25);
+
+    padding-bottom:30px;
+
+    margin-bottom:30px;
+
+}
+
+.discussion:last-child{
+
+    border:none;
+
+    margin-bottom:0;
+
+    padding-bottom:0;
+
+}
+
+.discussionTitle{
+
+    color:#D4AF37;
+
+    font-size:32px;
+
+    margin-bottom:8px;
+
+}
+
+.discussionMeta{
+
+    color:#D9CDAA;
+
+    font-size:18px;
+
+    margin-bottom:18px;
+
+}
+
+.discussionText{
+
+    font-size:21px;
+
+    margin-bottom:20px;
+
+}
+
+.converse{
+
+    display:inline-block;
+
+    color:#D4AF37;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+}
+
+.converse:hover{
+
+    text-decoration:underline;
+
+}
+
+footer{
+
+    text-align:center;
+
+    margin-top:50px;
+
+    margin-bottom:30px;
+
+}
+
+footer a{
+
+    color:#D4AF37;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+}
+
+footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+@media(max-width:800px){
+
+.subjects{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+h1{
+
+font-size:42px;
+
+}
+
+h2{
+
+font-size:28px;
+
+}
+
+.panel{
+
+padding:25px;
+
+}
+
+}
+
+@media(max-width:550px){
+
+.subjects{
+
+grid-template-columns:1fr;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+.publishRow{
+
+text-align:center;
+
+}
+
+}
+
+</style>
+    
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<h1>STIRLING HUNT HOUSE</h1>
+
+<h2>Symposium</h2>
+
+<p class="motto">
+
+Ideas are strengthened through respectful discourse.
+
+</p>
+
+</header>
+
+<!-- Open the Floor -->
+
+<section class="panel">
+
+<h3>Open the Floor</h3>
+
+<input
+type="text"
+id="title"
+placeholder="Title">
+
+<select id="subject">
+
+<option value="">Select Subject</option>
+
+<option>Political</option>
+
+<option>Military</option>
+
+<option>Economic</option>
+
+<option>Social</option>
+
+<option>Information</option>
+
+<option>Infrastructure</option>
+
+<option>Cyber</option>
+
+<option>Industry</option>
+
+</select>
+
+<textarea
+id="message"
+placeholder="Discussion"></textarea>
+
+<div class="publishRow">
+
+<button id="publishBtn">
+
+Publish
+
+</button>
+
+</div>
+
+</section>
+
+<!-- Subjects -->
+
+<section class="panel">
+
+<h3>Subjects</h3>
+
+<div class="subjects">
+
+<div class="subject">Political</div>
+
+<div class="subject">Military</div>
+
+<div class="subject">Economic</div>
+
+<div class="subject">Social</div>
+
+<div class="subject">Information</div>
+
+<div class="subject">Infrastructure</div>
+
+<div class="subject">Cyber</div>
+
+<div class="subject">Industry</div>
+
+</div>
+
+</section>
+
+<!-- Current Discussions -->
+
+<section class="panel">
+
+<h3>Current Discussions</h3>
+
+<div id="discussionList">
+
+<div class="loading">
+
+Loading discussions...
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<a href="common-room.html">
+
+Return to the Common Room
+
+</a>
+
+</footer>
+
+</div>
+
+<!-- Supabase and Symposium scripts will be added in Parts 3 & 4 -->
+
+</body>
+
+</html>

@@ -2,86 +2,88 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Logout Test | Stirling Hunt House</title>
+<title>Signing Out | Stirling Hunt House</title>
 
 <link rel="stylesheet" href="style.css">
 
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 </head>
 
 <body>
 
 <header class="hero">
-
-<h1>Signing Out...</h1>
-
-<p class="subtitle">
-Please wait while your secure session is ended.
-</p>
-
+    <h1>Signing Out...</h1>
+    <p class="subtitle">
+        Please wait while your secure session is ended.
+    </p>
 </header>
 
 <script>
+(async () => {
 
-alert("Step 1: JavaScript works.");
+    // Check JavaScript
+    alert("JavaScript running");
 
-if (!window.supabase) {
-    alert("Supabase library FAILED to load.");
-} else {
+    // Check Supabase library
+    if (!window.supabase) {
+        alert("ERROR: Supabase library failed to load.");
+        return;
+    }
+
     alert("Supabase library loaded.");
-}
 
-const supabase = window.supabase.createClient(
-    "https://ayvcbbgtlzxifjxahjul.supabase.co",
-    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
-);
+    // Create client
+    const supabase = window.supabase.createClient(
+        "https://ayvcbbgtlzxifjxahjul.supabase.co",
+        "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+    );
 
-alert("Step 2: Supabase client created.");
-
-async function testSupabase() {
-
-    alert("Step 3: Checking current session...");
+    alert("Supabase client created.");
 
     try {
 
-        const { data, error } = await supabase.auth.getSession();
-
-        if (error) {
-
-            alert("Session error: " + error.message);
-
-            return;
-
-        }
+        // Check session
+        const { data } = await supabase.auth.getSession();
 
         if (data.session) {
-
-            alert("Step 4: Session found.");
-
+            alert("User is currently signed in.");
         } else {
-
-            alert("Step 4: No session found.");
-
+            alert("No active session found.");
         }
+
+        // Attempt logout
+        const { error } = await supabase.auth.signOut({
+            scope: "local"
+        });
+
+        if (error) {
+            alert("Logout failed:");
+            alert(error.message);
+            return;
+        }
+
+        alert("Logout successful.");
+
+        // Remove any cached data
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // Redirect
+        window.location.replace("institute.html");
 
     } catch (err) {
 
-        alert("Unexpected error: " + err.message);
+        alert("Unexpected error:");
+        alert(err.message);
 
     }
 
-}
-
-testSupabase();
-
+})();
 </script>
 
 </body>
-
 </html>

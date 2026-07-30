@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Common Room</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#0f4637;
+    font-family:Georgia, serif;
+    color:#f5f1df;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:40px 25px;
+}
+
+h1{
+    text-align:center;
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#d9c89c;
+    margin-bottom:50px;
+    font-size:20px;
+}
+
+.card{
+    background:#184d3c;
+    border:2px solid #c7a534;
+    border-radius:25px;
+    padding:30px;
+    margin-bottom:35px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 20px rgba(0,0,0,.35);
+}
+
+.card h2{
+    margin-top:0;
+    font-size:34px;
+    color:#d9b43d;
+}
+
+.card p{
+    line-height:1.6;
+    font-size:18px;
+}
+
+button{
+    margin-top:20px;
+    background:#d4af37;
+    color:#123f33;
+    border:none;
+    padding:15px 35px;
+    border-radius:40px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e4c252;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Common Room</h1>
+
+<p class="subtitle">
+Welcome, Fellow.<br>
+Choose where you'd like to gather.
+</p>
+
+<div class="card">
+
+<h2>💬 Symposium</h2>
+
+<p>
+
+Join the Fellowship's public discussion.
+
+Share ideas, debate papers, ask questions,
+and participate in conversations visible to every logged-in Fellow.
+
+</p>
+
+<button onclick="location.href='symposium.html'">
+
+Enter Symposium
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>🤫 Whisper</h2>
+
+<p>
+
+Private, end-to-end encrypted conversations between Fellows.
+
+Speak confidentially with trusted colleagues.
+
+</p>
+
+<button onclick="location.href='whisper.html'">
+
+Open Whisper
+
+</button>
+
+</div>
+
+</div>
+
+</body>
+</html>

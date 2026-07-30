@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
 
 <link rel="stylesheet" href="style.css">
 
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
@@ -23,66 +21,39 @@
 </header>
 
 <script>
-(async () => {
+const supabase = window.supabase.createClient(
+    "https://ayvcbbgtlzxifjxahjul.supabase.co",
+    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+);
 
-    // Check JavaScript
-    alert("JavaScript running");
-
-    // Check Supabase library
-    if (!window.supabase) {
-        alert("ERROR: Supabase library failed to load.");
-        return;
-    }
-
-    alert("Supabase library loaded.");
-
-    // Create client
-    const supabase = window.supabase.createClient(
-        "https://ayvcbbgtlzxifjxahjul.supabase.co",
-        "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
-    );
-
-    alert("Supabase client created.");
+async function logout() {
 
     try {
 
-        // Check session
-        const { data } = await supabase.auth.getSession();
+        // Sign the user out
+        await supabase.auth.signOut();
 
-        if (data.session) {
-            alert("User is currently signed in.");
-        } else {
-            alert("No active session found.");
-        }
-
-        // Attempt logout
-        const { error } = await supabase.auth.signOut({
-            scope: "local"
-        });
-
-        if (error) {
-            alert("Logout failed:");
-            alert(error.message);
-            return;
-        }
-
-        alert("Logout successful.");
-
-        // Remove any cached data
+        // Clear any cached auth data
         localStorage.clear();
         sessionStorage.clear();
 
-        // Redirect
-        window.location.replace("institute.html");
+        // Prevent the browser back button restoring the page
+        history.replaceState(null, "", "login.html");
+
+        // Go back to login page
+        window.location.replace("login.html");
 
     } catch (err) {
 
-        alert("Unexpected error:");
-        alert(err.message);
+        console.error(err);
 
+        alert("Unable to sign out. Please try again.");
+
+        window.location.replace("login.html");
     }
+}
 
-})();
+logout();
 </script>
 
 </body>

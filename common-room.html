@@ -1,78 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Common Room</title>
+<title>Common Room | Stirling Hunt House</title>
 
 <style>
 
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
     background:#0f4637;
     font-family:Georgia, serif;
-    color:#f5f1df;
+    color:white;
+
 }
 
 .container{
-    max-width:700px;
-    margin:auto;
-    padding:40px 25px;
+
+    width:90%;
+    max-width:850px;
+
+    margin:50px auto;
+
+    padding:40px;
+
+    border:2px solid #a88a2b;
+    border-radius:25px;
+
+    background:#144735;
+
 }
 
 h1{
+
     text-align:center;
-    font-size:48px;
-    margin-bottom:10px;
+    color:#d8b33b;
+    font-size:50px;
+
+    margin-bottom:15px;
+
 }
 
 .subtitle{
+
     text-align:center;
-    color:#d9c89c;
-    margin-bottom:50px;
+
+    color:#f3ead0;
+
     font-size:20px;
+
+    margin-bottom:45px;
+
+    line-height:1.6;
+
 }
 
 .card{
+
     background:#184d3c;
-    border:2px solid #c7a534;
-    border-radius:25px;
+
+    border:2px solid #d4af37;
+
+    border-radius:20px;
+
     padding:30px;
+
     margin-bottom:35px;
+
     transition:.3s;
+
 }
 
 .card:hover{
+
     transform:translateY(-4px);
-    box-shadow:0 0 20px rgba(0,0,0,.35);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+
 }
 
 .card h2{
-    margin-top:0;
+
+    color:#d4af37;
+
     font-size:34px;
-    color:#d9b43d;
+
+    margin-bottom:18px;
+
 }
 
 .card p{
-    line-height:1.6;
+
+    color:#f6f0dc;
+
+    line-height:1.8;
+
     font-size:18px;
+
+    margin-bottom:25px;
+
 }
 
-button{
-    margin-top:20px;
+.button{
+
+    display:inline-block;
+
     background:#d4af37;
-    color:#123f33;
-    border:none;
-    padding:15px 35px;
+
+    color:#103b31;
+
+    text-decoration:none;
+
+    padding:15px 40px;
+
     border-radius:40px;
+
     font-size:18px;
+
     font-weight:bold;
-    cursor:pointer;
+
+    transition:.3s;
+
 }
 
-button:hover{
+.button:hover{
+
     background:#e4c252;
+
+}
+
+.back{
+
+    text-align:center;
+
+    margin-top:40px;
+
+}
+
+.back a{
+
+    color:#d4af37;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+}
+
+.back a:hover{
+
+    text-decoration:underline;
+
+}
+
+footer{
+
+    text-align:center;
+
+    margin-top:50px;
+
+    color:#c8b98b;
+
+    font-size:15px;
+
 }
 
 </style>
@@ -86,52 +185,76 @@ button:hover{
 <h1>Common Room</h1>
 
 <p class="subtitle">
-Welcome, Fellow.<br>
-Choose where you'd like to gather.
+
+Welcome, Fellow.
+
+<br><br>
+
+The Common Room is where members of Stirling Hunt House meet to exchange ideas,
+develop friendships, and continue the conversation beyond the Library.
+
 </p>
 
 <div class="card">
 
-<h2>💬 Symposium</h2>
+<h2> Symposium</h2>
 
 <p>
 
-Join the Fellowship's public discussion.
+Enter the Fellowship's public discussion hall.
 
-Share ideas, debate papers, ask questions,
-and participate in conversations visible to every logged-in Fellow.
+Read announcements, debate research, ask questions, and contribute to conversations
+shared with every authenticated Fellow.
 
 </p>
 
-<button onclick="location.href='symposium.html'">
+<a href="symposium.html" class="button">
 
 Enter Symposium
 
-</button>
+</a>
 
 </div>
 
 <div class="card">
 
-<h2>🤫 Whisper</h2>
+<h2> Whisper</h2>
 
 <p>
 
-Private, end-to-end encrypted conversations between Fellows.
+Whisper is your private correspondence.
 
-Speak confidentially with trusted colleagues.
+Secure, end-to-end encrypted conversations between Fellows for confidential discussion,
+collaboration, and mentorship.
 
 </p>
 
-<button onclick="location.href='whisper.html'">
+<a href="whisper.html" class="button">
 
 Open Whisper
 
-</button>
+</a>
 
 </div>
+
+<div class="back">
+
+<a href="fellows.html">
+
+← Return to Fellows' Portal
+
+</a>
+
+</div>
+
+<footer>
+
+Sterling Hunt House • Fellows' Portal
+
+</footer>
 
 </div>
 
 </body>
+
 </html>

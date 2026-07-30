@@ -31,6 +31,12 @@ Please wait while your secure session is ended.
 
 alert("Step 1: JavaScript works.");
 
+if (!window.supabase) {
+    alert("Supabase library FAILED to load.");
+} else {
+    alert("Supabase library loaded.");
+}
+
 const supabase = window.supabase.createClient(
     "https://ayvcbbgtlzxifjxahjul.supabase.co",
     "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"

@@ -254,7 +254,24 @@ Sterling Hunt House • Fellows' Portal
 </footer>
 
 </div>
+<script type="module">
 
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+const supabase = createClient(
+
+"https://ayvcbbgtlzxifjxahjul.supabase.co",
+
+"sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+
+);
+
+window.supabase = supabase;
+
+console.log("Supabase Connected");
+
+</script>
+    
 </body>
 
 </html>

@@ -505,8 +505,56 @@ Return to the Common Room
 
 </div>
 
-<!-- Supabase and Symposium scripts will be added in Parts 3 & 4 -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const SUPABASE_URL = "https://ayvcbbgtlzxifjxahjul.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv";
+
+const supabase = window.supabase.createClient(
+    SUPABASE_URL,https://ayvcbbgtlzxifjxahjul.supabase.co
+    const SUPABASE_KEY = "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv";
+);
+
+document.getElementById("publishBtn").addEventListener("click", async () => {
+
+    const title = document.getElementById("title").value.trim();
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value.trim();
+
+    if (!title || !subject || !message) {
+        alert("Please complete all fields.");
+        return;
+    }
+
+    const {
+        error
+    } = await supabase
+        .from("common_room")
+        .insert([{
+            title: title,
+            subject: subject,
+            message: message,
+            author: localStorage.getItem("username"),
+            user_id: localStorage.getItem("user_id")
+        }]);
+
+    if (error) {
+        alert(error.message);
+        return;
+    }
+
+    alert("Discussion published.");
+
+    document.getElementById("title").value = "";
+    document.getElementById("subject").selectedIndex = 0;
+    document.getElementById("message").value = "";
+
+});
+</script>
+    
 </body>
 
 </html>

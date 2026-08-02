@@ -15,341 +15,212 @@
 
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-
-    background:#103B31;
-
-    color:#F6F2E8;
-
-    font-family:'EB Garamond', serif;
-
-    line-height:1.7;
-
+background:#103B31;
+color:#F6F2E8;
+font-family:'EB Garamond',serif;
+line-height:1.7;
 }
 
 .container{
-
-    width:92%;
-
-    max-width:980px;
-
-    margin:60px auto;
-
+width:92%;
+max-width:980px;
+margin:60px auto;
 }
 
 header{
-
-    text-align:center;
-
-    margin-bottom:50px;
-
+text-align:center;
+margin-bottom:50px;
 }
 
 h1{
-
-    color:#D4AF37;
-
-    font-size:60px;
-
-    letter-spacing:2px;
-
-    margin-bottom:6px;
-
-    font-weight:600;
-
+color:#D4AF37;
+font-size:60px;
+letter-spacing:2px;
+margin-bottom:6px;
+font-weight:600;
 }
 
 h2{
-
-    font-size:34px;
-
-    font-weight:400;
-
-    margin-bottom:18px;
-
+font-size:34px;
+font-weight:400;
+margin-bottom:18px;
 }
 
 .motto{
-
-    color:#D9CDAA;
-
-    font-size:22px;
-
-    font-style:italic;
-
+color:#D9CDAA;
+font-size:22px;
+font-style:italic;
 }
 
 .panel{
-
-    background:#18483A;
-
-    border:1px solid #B8912D;
-
-    border-radius:18px;
-
-    padding:35px;
-
-    margin-bottom:35px;
-
+background:#18483A;
+border:1px solid #B8912D;
+border-radius:18px;
+padding:35px;
+margin-bottom:35px;
 }
 
 .panel h3{
-
-    color:#D4AF37;
-
-    font-size:30px;
-
-    margin-bottom:25px;
-
-    font-weight:500;
-
+color:#D4AF37;
+font-size:30px;
+margin-bottom:25px;
+font-weight:500;
 }
 
 input,
 select,
 textarea{
-
-    width:100%;
-
-    padding:16px;
-
-    margin-bottom:20px;
-
-    background:#F6F2E8;
-
-    border:1px solid #D8C79C;
-
-    border-radius:8px;
-
-    color:#103B31;
-
-    font-family:'EB Garamond', serif;
-
-    font-size:20px;
-
+width:100%;
+padding:16px;
+margin-bottom:20px;
+background:#F6F2E8;
+border:1px solid #D8C79C;
+border-radius:8px;
+color:#103B31;
+font-family:'EB Garamond',serif;
+font-size:20px;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
-
-    outline:none;
-
-    border-color:#D4AF37;
-
+outline:none;
+border-color:#D4AF37;
 }
 
 textarea{
-
-    min-height:220px;
-
-    resize:vertical;
-
+min-height:220px;
+resize:vertical;
 }
 
 .publishRow{
-
-    text-align:right;
-
+text-align:right;
 }
 
 button{
-
-    background:#D4AF37;
-
-    color:#103B31;
-
-    border:none;
-
-    padding:14px 40px;
-
-    border-radius:40px;
-
-    cursor:pointer;
-
-    font-family:'EB Garamond', serif;
-
-    font-size:20px;
-
-    transition:.25s;
-
+background:#D4AF37;
+color:#103B31;
+border:none;
+padding:14px 40px;
+border-radius:40px;
+cursor:pointer;
+font-family:'EB Garamond',serif;
+font-size:20px;
+transition:.25s;
 }
 
 button:hover{
-
-    background:#E4C252;
-
+background:#E4C252;
 }
 
 .subjects{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:15px;
-
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
 }
 
 .subject{
-
-    border:1px solid #B8912D;
-
-    border-radius:10px;
-
-    padding:16px;
-
-    text-align:center;
-
-    transition:.25s;
-
-    cursor:pointer;
-
+border:1px solid #B8912D;
+border-radius:10px;
+padding:16px;
+text-align:center;
+transition:.25s;
+cursor:pointer;
 }
 
 .subject:hover{
-
-    background:#1F5645;
-
+background:#1F5645;
 }
 
 .loading{
-
-    text-align:center;
-
-    color:#D9CDAA;
-
-    font-size:22px;
-
-    padding:40px;
-
+text-align:center;
+color:#D9CDAA;
+font-size:22px;
+padding:40px;
 }
 
 .discussion{
-
-    border-bottom:1px solid rgba(212,175,55,.25);
-
-    padding-bottom:30px;
-
-    margin-bottom:30px;
-
+border-bottom:1px solid rgba(212,175,55,.25);
+padding-bottom:30px;
+margin-bottom:30px;
 }
 
 .discussion:last-child{
-
-    border:none;
-
-    margin-bottom:0;
-
-    padding-bottom:0;
-
+border-bottom:none;
+margin-bottom:0;
+padding-bottom:0;
 }
 
 .discussionTitle{
-
-    color:#D4AF37;
-
-    font-size:32px;
-
-    margin-bottom:8px;
-
+color:#D4AF37;
+font-size:32px;
+margin-bottom:8px;
 }
 
 .discussionMeta{
-
-    color:#D9CDAA;
-
-    font-size:18px;
-
-    margin-bottom:18px;
-
+color:#D9CDAA;
+font-size:18px;
+margin-bottom:18px;
 }
 
 .discussionText{
-
-    font-size:21px;
-
-    margin-bottom:20px;
-
+font-size:21px;
+margin-bottom:20px;
+white-space:pre-wrap;
 }
 
 .converse{
-
-    display:inline-block;
-
-    color:#D4AF37;
-
-    text-decoration:none;
-
-    font-size:20px;
-
+display:inline-block;
+color:#D4AF37;
+text-decoration:none;
+font-size:20px;
 }
 
 .converse:hover{
-
-    text-decoration:underline;
-
+text-decoration:underline;
 }
 
 footer{
-
-    text-align:center;
-
-    margin-top:50px;
-
-    margin-bottom:30px;
-
+text-align:center;
+margin-top:50px;
+margin-bottom:30px;
 }
 
 footer a{
-
-    color:#D4AF37;
-
-    text-decoration:none;
-
-    font-size:20px;
-
+color:#D4AF37;
+text-decoration:none;
+font-size:20px;
 }
 
 footer a:hover{
-
-    text-decoration:underline;
-
+text-decoration:underline;
 }
 
 @media(max-width:800px){
 
 .subjects{
-
 grid-template-columns:repeat(2,1fr);
-
 }
 
 h1{
-
 font-size:42px;
-
 }
 
 h2{
-
 font-size:28px;
-
 }
 
 .panel{
-
 padding:25px;
-
 }
 
 }
@@ -357,27 +228,21 @@ padding:25px;
 @media(max-width:550px){
 
 .subjects{
-
 grid-template-columns:1fr;
-
 }
 
 button{
-
 width:100%;
-
 }
 
 .publishRow{
-
 text-align:center;
-
 }
 
 }
 
 </style>
-    
+
 </head>
 
 <body>
@@ -391,9 +256,7 @@ text-align:center;
 <h2>Symposium</h2>
 
 <p class="motto">
-
 Ideas are strengthened through respectful discourse.
-
 </p>
 
 </header>
@@ -413,21 +276,21 @@ placeholder="Title">
 
 <option value="">Select Subject</option>
 
-<option>Political</option>
+<option value="Political">Political</option>
 
-<option>Military</option>
+<option value="Military">Military</option>
 
-<option>Economic</option>
+<option value="Economic">Economic</option>
 
-<option>Social</option>
+<option value="Social">Social</option>
 
-<option>Information</option>
+<option value="Information">Information</option>
 
-<option>Infrastructure</option>
+<option value="Infrastructure">Infrastructure</option>
 
-<option>Cyber</option>
+<option value="Cyber">Cyber</option>
 
-<option>Industry</option>
+<option value="Industry">Industry</option>
 
 </select>
 
@@ -439,7 +302,7 @@ placeholder="Discussion"></textarea>
 
 <button id="publishBtn">
 
-Publish
+Publish Discussion
 
 </button>
 
@@ -504,107 +367,3 @@ Return to the Common Room
 </footer>
 
 </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-<script>
-const SUPABASE_URL = "https://ayvcbbgtlzxifjxahjul.supabase.co";
-
-const SUPABASE_KEY = "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv";
-
-const supabase = window.supabase.createClient(
-    SUPABASE_URL,https://ayvcbbgtlzxifjxahjul.supabase.co
-    const SUPABASE_KEY = "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv";
-);
-
-document.getElementById("publishBtn").addEventListener("click", async () => {
-
-    const title = document.getElementById("title").value.trim();
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("message").value.trim();
-
-    if (!title || !subject || !message) {
-        alert("Please complete all fields.");
-        return;
-    }
-
-    const {
-        error
-    } = await supabase
-        .from("common_room")
-        .insert([{
-            title: title,
-            subject: subject,
-            message: message,
-            author: localStorage.getItem("username"),
-            user_id: localStorage.getItem("user_id")
-        }]);
-
-    if (error) {
-        alert(error.message);
-        return;
-    }
-
-    alert("Discussion published.");
-
-    document.getElementById("title").value = "";
-    document.getElementById("subject").selectedIndex = 0;
-    document.getElementById("message").value = "";
-
-});
-</script>
-
-    <script type="module">
-
-import { createClient } from "https://esm.sh/@supabase/supabase-js";
-
-const supabase = createClient(
-    "https://ayvcbbgtlzxifjxahjul.supabase.co",
-    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
-);
-
-const publishBtn = document.getElementById("publishBtn");
-
-publishBtn.addEventListener("click", async () => {
-
-    const title = document.getElementById("title").value.trim();
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("message").value.trim();
-
-    if (!title || !subject || !message) {
-        alert("Please complete all fields.");
-        return;
-    }
-
-    const { data, error } = await supabase
-        .from("common_room")
-        .insert([
-            {
-                Title: title,
-                Subject: subject,
-                Message: message,
-                Author: "Fellow",
-                Replies: 0
-            }
-        ]);
-
-    if (error) {
-        alert(error.message);
-        console.error(error);
-        return;
-    }
-
-    alert("Publication successful.");
-
-    document.getElementById("title").value = "";
-    document.getElementById("message").value = "";
-    document.getElementById("subject").selectedIndex = 0;
-
-});
-
-    </script>
-    
-</body>
-
-</html>

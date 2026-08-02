@@ -1,102 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Common Room | Stirling Hunt House</title>
-
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Symposium | Stirling Hunt House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+body{margin:0;background:#103B31;color:#F6F2E8;font-family:'EB Garamond',serif}
+.wrap{max-width:900px;margin:60px auto;padding:20px}
+.card{background:#18483A;border:1px solid #B8912D;border-radius:14px;padding:24px;margin:24px 0}
+input,select,textarea,button{width:100%;padding:12px;margin:8px 0;font-family:inherit}
+button{background:#D4AF37;border:none;cursor:pointer}
+</style></head>
+<body><div class="wrap">
+<h1>Stirling Hunt House</h1><h2>Symposium</h2>
+<div class="card">
+<input id="title" placeholder="Title">
+<select id="subject"><option>Political</option><option>Military</option><option>Economic</option><option>Social</option><option>Information</option><option>Infrastructure</option><option>Cyber</option><option>Industry</option></select>
+<textarea id="message" placeholder="Discussion"></textarea>
+<button id="publishBtn">Publish</button>
+</div>
+<div class="card"><h3>Current Discussions</h3><div id="discussionList"></div></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const supabase=window.supabase.createClient(
+"https://ayvcbbgtlzxifjxahjul.supabase.co",
+"sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv");
+async function load(){
+ const {data,error}=await supabase.from("common_room").select("*").order("id",{ascending:false});
+ const el=document.getElementById("discussionList");
+ if(error){el.textContent=error.message;return;}
+ el.innerHTML=(data||[]).map(d=>`<div class='card'><h3>${d.Title??d.title}</h3><p><em>${d.Subject??d.subject}</em></p><p>${d.Message??d.message}</p></div>`).join("");
 }
-
-body{
-
-    background:#0f4637;
-    font-family:Georgia, serif;
-    color:white;
-
-}
-
-.container{
-
-    width:90%;
-    max-width:850px;
-
-    margin:50px auto;
-
-    padding:40px;
-
-    border:2px solid #a88a2b;
-    border-radius:25px;
-
-    background:#144735;
-
-}
-
-h1{
-
-    text-align:center;
-    color:#d8b33b;
-    font-size:50px;
-
-    margin-bottom:15px;
-
-}
-
-.subtitle{
-
-    text-align:center;
-
-    color:#f3ead0;
-
-    font-size:20px;
-
-    margin-bottom:45px;
-
-    line-height:1.6;
-
-}
-
-.card{
-
-    background:#184d3c;
-
-    border:2px solid #d4af37;
-
-    border-radius:20px;
-
-    padding:30px;
-
-    margin-bottom:35px;
-
-    transition:.3s;
-
-}
-
-.card:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:0 10px 25px rgba(0,0,0,.3);
-
-}
-
-.card h2{
-
-    color:#d4af37;
-
-    font-size:34px;
-
-    margin-bottom:18px;
-
-}
+document.getElementById("publishBtn").onclick=async()=>{
+ const payload={Title:title.value,Subject:subject.value,Message:message.value,Replies:0};
+ const {error}=await supabase.from("common_room").insert(payload);
+ if(error){alert(error.message);return;}
+ title.value="";message.value="";load();
+};
+load();
+</script></body></html>}
 
 .card p{
 

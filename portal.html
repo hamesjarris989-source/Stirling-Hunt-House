@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Fellows' Portal | Stirling Hunt House</title>
@@ -17,13 +16,13 @@
 
 <header class="hero">
 
-<h1>Welcome</h1>
+    <h1>Welcome</h1>
 
-<h2>Fellows' Portal</h2>
+    <h2>Fellows' Portal</h2>
 
-<p class="subtitle">
-Access Granted
-</p>
+    <p class="subtitle">
+        Access Granted
+    </p>
 
 </header>
 
@@ -77,19 +76,30 @@ Sign Out
 
 <script>
 
+const SUPABASE_URL =
+"https://ayvcbbgtlzxifjxahjul.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_gcRaPoqR2m0_BDTlLzXpDg_MYCyJcvC";
+
 const supabase = window.supabase.createClient(
-    "https://ayvcbbgtlzxifjxahjul.supabase.co",
-    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+    SUPABASE_URL,
+    SUPABASE_KEY
 );
 
 async function checkUser() {
 
-    const { data } = await supabase.auth.getSession();
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error) {
+        console.error(error);
+        window.location.href = "institute.html";
+        return;
+    }
 
     if (!data.session) {
-
         window.location.href = "institute.html";
-
+        return;
     }
 
 }
@@ -97,6 +107,10 @@ async function checkUser() {
 checkUser();
 
 </script>
+
+</body>
+
+</html></script>
 
 </body>
 

@@ -16,13 +16,13 @@
 
 <header class="hero">
 
-    <h1>Welcome</h1>
+<h1>Welcome</h1>
 
-    <h2>Fellows' Portal</h2>
+<h2>Fellows' Portal</h2>
 
-    <p class="subtitle">
-        Access Granted
-    </p>
+<p class="subtitle">
+Access Granted
+</p>
 
 </header>
 
@@ -97,6 +97,20 @@ async function checkUser() {
         return;
     }
 
+    if (!data.session) {
+        window.location.href = "institute.html";
+        return;
+    }
+
+}
+
+checkUser();
+
+</script>
+
+</body>
+
+</html>
     if (!data.session) {
         window.location.href = "institute.html";
         return;

@@ -23,8 +23,11 @@ STIRLING HUNT HOUSE
 </div>
 
 <ul>
+
 <li><a href="index.html">Home</a></li>
-<li><a href="publications.html">Publications</a></li>
+
+<li><a href="publications.html">Journal</a></li>
+
 </ul>
 
 </nav>
@@ -36,7 +39,9 @@ STIRLING HUNT HOUSE
 <h2>Stirling Hunt House</h2>
 
 <p class="subtitle">
+
 Access is restricted to Fellows of the Society.
+
 </p>
 
 <input
@@ -53,8 +58,12 @@ placeholder="Password">
 
 <br><br>
 
-<button class="button" id="loginButton">
+<button
+class="button"
+id="loginButton">
+
 Sign In
+
 </button>
 
 <p id="message"></p>
@@ -63,50 +72,82 @@ Sign In
 
 <script>
 
-document.addEventListener("DOMContentLoaded", () => {
+const SUPABASE_URL =
+"https://ayvcbbgtlzxifjxahjul.supabase.co";
 
-    const supabase = window.supabase.createClient(
-        "https://ayvcbbgtlzxifjxahjul.supabase.co",
-        "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
-    );
+const SUPABASE_KEY =
+"sb_publishable_gcRaPoqR2m0_BDTlLzXpDg_MYCyJcvC";
 
-    document.getElementById("loginButton").addEventListener("click", async () => {
+const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
-        const message = document.getElementById("message");
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
+const loginButton = document.getElementById("loginButton");
+const message = document.getElementById("message");
 
-        message.textContent = "Signing in...";
+loginButton.addEventListener("click", signIn);
 
-        if (!email || !password) {
-            message.textContent = "Please enter your email and password.";
+async function signIn() {
+
+    message.textContent = "";
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    if (!email || !password) {
+
+        message.textContent =
+        "Please enter your email and password.";
+
+        return;
+
+    }
+
+    loginButton.disabled = true;
+    loginButton.textContent = "Signing In...";
+
+    try {
+
+        const { data, error } =
+        await supabase.auth.signInWithPassword({
+
+            email: email,
+            password: password
+
+        });
+
+        if (error) {
+
+            message.textContent = error.message;
+
+            loginButton.disabled = false;
+            loginButton.textContent = "Sign In";
+
             return;
-        }
-
-        try {
-
-            const { error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password
-            });
-
-            if (error) {
-                message.textContent = error.message;
-                return;
-            }
-
-            window.location.href = "portal.html";
-
-        } catch (err) {
-
-            console.error(err);
-            message.textContent = "Unable to connect to the authentication service.";
 
         }
 
-    });
+        window.location.href = "portal.html";
 
-});
+    }
+
+    catch(err){
+
+        console.error(err);
+
+        message.textContent =
+        "Unable to connect to Stirling Hunt House.";
+
+        loginButton.disabled = false;
+        loginButton.textContent = "Sign In";
+
+    }
+
+}
 
 </script>
 

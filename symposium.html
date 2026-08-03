@@ -4,16 +4,23 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Symposium | Stirling Hunt House</title>
 
 <link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -28,14 +35,14 @@ body{
 background:#103B31;
 color:#F6F2E8;
 font-family:'EB Garamond',serif;
-line-height:1.7;
+line-height:1.75;
 
 }
 
 .container{
 
 width:92%;
-max-width:1050px;
+max-width:1100px;
 margin:60px auto;
 
 }
@@ -49,7 +56,7 @@ margin-bottom:50px;
 
 h1{
 
-font-size:60px;
+font-size:62px;
 font-weight:600;
 letter-spacing:2px;
 color:#D4AF37;
@@ -60,13 +67,13 @@ h2{
 
 font-size:34px;
 font-weight:400;
-margin-top:8px;
+margin-top:10px;
 
 }
 
 .motto{
 
-margin-top:18px;
+margin-top:20px;
 font-size:22px;
 font-style:italic;
 color:#D9CDAA;
@@ -76,9 +83,13 @@ color:#D9CDAA;
 .panel{
 
 background:#18483A;
+
 border:1px solid #B8912D;
+
 border-radius:18px;
+
 padding:35px;
+
 margin-bottom:35px;
 
 }
@@ -86,8 +97,96 @@ margin-bottom:35px;
 .panel h3{
 
 color:#D4AF37;
+
 font-size:30px;
+
 margin-bottom:25px;
+
+font-weight:500;
+
+}
+
+.featured{
+
+border:2px solid #D4AF37;
+
+background:#1B4D3E;
+
+box-shadow:0 0 25px rgba(212,175,55,.15);
+
+}
+
+.featured h4{
+
+font-size:20px;
+
+color:#D9CDAA;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.featuredTitle{
+
+font-size:38px;
+
+color:#D4AF37;
+
+margin-bottom:10px;
+
+}
+
+.featuredMeta{
+
+color:#D9CDAA;
+
+font-size:19px;
+
+margin-bottom:20px;
+
+}
+
+.featuredText{
+
+font-size:22px;
+
+margin-bottom:30px;
+
+}
+
+.button{
+
+display:inline-block;
+
+background:#D4AF37;
+
+color:#103B31;
+
+padding:14px 36px;
+
+border-radius:40px;
+
+text-decoration:none;
+
+font-size:20px;
+
+transition:.25s;
+
+border:none;
+
+cursor:pointer;
+
+font-family:'EB Garamond',serif;
+
+}
+
+.button:hover{
+
+background:#E4C252;
 
 }
 
@@ -96,24 +195,22 @@ select,
 textarea{
 
 width:100%;
+
 padding:16px;
+
 margin-bottom:20px;
 
-background:#F6F2E8;
-color:#103B31;
+border-radius:10px;
 
 border:1px solid #D8C79C;
-border-radius:8px;
+
+background:#F6F2E8;
+
+color:#103B31;
 
 font-family:'EB Garamond',serif;
+
 font-size:20px;
-
-}
-
-textarea{
-
-min-height:240px;
-resize:vertical;
 
 }
 
@@ -122,7 +219,16 @@ select:focus,
 textarea:focus{
 
 outline:none;
+
 border-color:#D4AF37;
+
+}
+
+textarea{
+
+min-height:220px;
+
+resize:vertical;
 
 }
 
@@ -130,249 +236,49 @@ border-color:#D4AF37;
 
 text-align:right;
 
-}
-
-button{
-
-background:#D4AF37;
-color:#103B31;
-
-border:none;
-border-radius:40px;
-
-padding:14px 40px;
-
-font-size:20px;
-font-family:'EB Garamond',serif;
-
-cursor:pointer;
-
-transition:.25s;
+margin-top:10px;
 
 }
 
-button:hover{
-
-background:#E5C34E;
-
-}
-
-button:disabled{
-
-opacity:.6;
-cursor:not-allowed;
-
-}
-
-.subjectBar{
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-
-}
-
-.subject{
-
-padding:16px;
-
-border:1px solid #B8912D;
-border-radius:10px;
-
-text-align:center;
-
-cursor:pointer;
-
-transition:.25s;
-
-}
-
-.subject:hover{
-
-background:#1F5645;
-
-}
-
-.subject.active{
-
-background:#D4AF37;
-color:#103B31;
-font-weight:bold;
-
-}
-
-.loading{
-
-text-align:center;
-padding:40px;
-font-size:22px;
-color:#D9CDAA;
-
-}
-
-.empty{
-
-text-align:center;
-padding:50px;
-font-size:22px;
-font-style:italic;
-color:#D9CDAA;
-
-}
-
-.discussion{
-
-background:#123E33;
-
-border:1px solid rgba(212,175,55,.35);
-
-border-radius:14px;
-
-padding:28px;
-
-margin-bottom:30px;
-
-}
-
-.discussionTitle{
-
-font-size:32px;
-color:#D4AF37;
-margin-bottom:10px;
-
-}
-
-.meta{
-
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-
-font-size:18px;
-color:#D9CDAA;
-
-margin-bottom:18px;
-
-}
-
-.subjectBadge{
-
-display:inline-block;
-
-padding:6px 12px;
-
-border-radius:20px;
-
-background:#D4AF37;
-color:#103B31;
-
-font-size:16px;
-font-weight:bold;
-
-}
-
-.discussionBody{
-
-font-size:21px;
-white-space:pre-wrap;
-margin:25px 0;
-
-}
-
-.divider{
+.sectionDivider{
 
 height:1px;
 
 background:rgba(212,175,55,.25);
 
-margin:20px 0;
+margin:45px 0;
 
 }
 
-.discussionFooter{
+@media(max-width:800px){
 
-display:flex;
+.container{
 
-justify-content:space-between;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-}
-
-.replyCount{
-
-color:#D9CDAA;
-font-size:18px;
-
-}
-
-.converse{
-
-color:#D4AF37;
-text-decoration:none;
-font-size:20px;
-
-}
-
-.converse:hover{
-
-text-decoration:underline;
-
-}
-
-.status{
-
-text-align:center;
-margin-top:20px;
-font-size:20px;
-color:#D9CDAA;
-
-}
-
-footer{
-
-margin:60px 0;
-text-align:center;
-
-}
-
-footer a{
-
-color:#D4AF37;
-text-decoration:none;
-font-size:20px;
-
-}
-
-footer a:hover{
-
-text-decoration:underline;
-
-}
-
-@media(max-width:850px){
-
-.subjectBar{
-
-grid-template-columns:repeat(2,1fr);
+width:95%;
 
 }
 
 h1{
 
-font-size:44px;
+font-size:46px;
 
 }
 
+h2{
+
+font-size:28px;
+
 }
 
-@media(max-width:600px){
+.panel{
 
-.subjectBar{
+padding:25px;
 
-grid-template-columns:1fr;
+}
+
+.featuredTitle{
+
+font-size:30px;
 
 }
 
@@ -382,16 +288,9 @@ text-align:center;
 
 }
 
-button{
+.button{
 
 width:100%;
-
-}
-
-.meta{
-
-flex-direction:column;
-gap:8px;
 
 }
 
@@ -407,97 +306,378 @@ gap:8px;
 
 <header>
 
-<h1>STIRLING HUNT HOUSE</h1>
+<h1>
 
-<h2>Symposium</h2>
+STIRLING HUNT HOUSE
+
+</h1>
+
+<h2>
+
+Symposium
+
+</h2>
 
 <p class="motto">
 
-Ideas are strengthened through respectful discourse.
+Ideas are strengthened through disciplined discourse.
 
 </p>
 
 </header>
 
+<!-- Featured Discussion -->
+
+<section class="panel featured">
+
+<h4>
+
+Featured Discussion
+
+</h4>
+
+<h3 class="featuredTitle">
+
+The Future of Independent Intelligence
+
+</h3>
+
+<p class="featuredMeta">
+
+Political • Global • Current
+
+</p>
+
+<p class="featuredText">
+
+This month's featured discussion examines the evolving role of independent intelligence organisations, strategic analysis and open-source information within an increasingly contested international environment.
+
+</p>
+
+<a href="#"
+
+class="button">
+
+Enter Discussion
+
+</a>
+
+</section>
+
+<!-- Open the Floor -->
+
 <section class="panel">
 
-<h3>Open the Floor</h3>
+<h3>
+
+Open the Floor
+
+</h3>
 
 <input
 type="text"
 id="title"
-placeholder="Title of your discussion">
+placeholder="Discussion Title">
 
 <select id="subject">
 
-<option value="">Choose a subject</option>
+<option value="">
 
-<option>Political</option>
-<option>Military</option>
-<option>Economic</option>
-<option>Social</option>
-<option>Information</option>
-<option>Infrastructure</option>
-<option>Cyber</option>
-<option>Industry</option>
+Select Subject
+
+</option>
+
+<option>
+
+Political
+
+</option>
+
+<option>
+
+Military
+
+</option>
+
+<option>
+
+Economic
+
+</option>
+
+<option>
+
+Social
+
+</option>
+
+<option>
+
+Information
+
+</option>
+
+<option>
+
+Infrastructure
+
+</option>
+
+<option>
+
+Cyber
+
+</option>
+
+<option>
+
+Industry
+
+</option>
+
+</select>
+
+    <!-- Area of Interest -->
+
+<select id="region">
+
+<option value="">
+
+Area of Interest
+
+</option>
+
+<option>Global</option>
+
+<option>Europe</option>
+
+<option>North America</option>
+
+<option>Latin America</option>
+
+<option>Middle East</option>
+
+<option>Africa</option>
+
+<option>Central Asia</option>
+
+<option>South Asia</option>
+
+<option>East Asia</option>
+
+<option>Southeast Asia</option>
+
+<option>Indo-Pacific</option>
+
+<option>Arctic</option>
+
+<option>Space</option>
+
+</select>
+
+<!-- Status -->
+
+<select id="status">
+
+<option value="">
+
+Status
+
+</option>
+
+<option>Current</option>
+
+<option>Emerging</option>
+
+<option>Historical</option>
+
+<option>Concluded</option>
 
 </select>
 
 <textarea
+
 id="message"
-placeholder="Present your thoughts to the Fellowship..."></textarea>
+
+placeholder="Present your discussion to the Fellowship...">
+
+</textarea>
 
 <div class="publishRow">
 
-<button id="publishBtn">
+<button
 
-Publish Discussion
+id="publishBtn"
+
+class="button">
+
+Open the Floor
 
 </button>
 
 </div>
 
-<p id="status" class="status"></p>
-
 </section>
+
+<div class="sectionDivider"></div>
+
+<!-- Search -->
 
 <section class="panel">
 
-<h3>Browse the Symposium</h3>
+<h3>
 
-<div class="subjectBar">
+Search the Symposium
 
-<div class="subject active" data-subject="">All Discussions</div>
+</h3>
 
-<div class="subject" data-subject="Political">Political</div>
+<input
 
-<div class="subject" data-subject="Military">Military</div>
+type="text"
 
-<div class="subject" data-subject="Economic">Economic</div>
+id="search"
 
-<div class="subject" data-subject="Social">Social</div>
+placeholder="Search titles, Fellows or keywords...">
 
-<div class="subject" data-subject="Information">Information</div>
+</section>
 
-<div class="subject" data-subject="Infrastructure">Infrastructure</div>
+<!-- Filters -->
 
-<div class="subject" data-subject="Cyber">Cyber</div>
+<section class="panel">
 
-<div class="subject" data-subject="Industry">Industry</div>
+<h3>
+
+Browse by Subject
+
+</h3>
+
+<style>
+
+.filterGrid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:15px;
+
+margin-top:25px;
+
+}
+
+.filterCard{
+
+background:#1E5645;
+
+border:1px solid #B8912D;
+
+border-radius:12px;
+
+padding:18px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.25s;
+
+font-size:20px;
+
+}
+
+.filterCard:hover{
+
+background:#276652;
+
+transform:translateY(-2px);
+
+}
+
+@media(max-width:800px){
+
+.filterGrid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:520px){
+
+.filterGrid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+<div class="filterGrid">
+
+<div class="filterCard">Political</div>
+
+<div class="filterCard">Military</div>
+
+<div class="filterCard">Economic</div>
+
+<div class="filterCard">Social</div>
+
+<div class="filterCard">Information</div>
+
+<div class="filterCard">Infrastructure</div>
+
+<div class="filterCard">Cyber</div>
+
+<div class="filterCard">Industry</div>
 
 </div>
 
 </section>
 
+<div class="sectionDivider"></div>
+
+<!-- Active Conversations -->
+
 <section class="panel">
 
-<h3>Current Discussions</h3>
+<h3>
+
+Active Conversations
+
+</h3>
+
+<div id="activeDiscussions">
+
+<p style="color:#D9CDAA;font-size:21px;">
+
+Loading active discussions...
+
+</p>
+
+</div>
+
+</section>
+
+    <div class="sectionDivider"></div>
+
+<!-- Current Discussions -->
+
+<section class="panel">
+
+<h3>
+
+Current Discussions
+
+</h3>
 
 <div id="discussionList">
 
-<div class="loading">
+<div style="text-align:center;padding:50px;color:#D9CDAA;font-size:22px;">
 
-Loading discussions from the Symposium...
+Loading discussions...
 
 </div>
 
@@ -505,110 +685,104 @@ Loading discussions from the Symposium...
 
 </section>
 
-<footer>
+<div class="sectionDivider"></div>
 
-<a href="common-room.html">
+<!-- Proceedings -->
 
-← Return to the Common Room
+<section class="panel">
 
-</a>
+<h3>
 
-</footer>
+Proceedings
+
+</h3>
+
+<p style="font-size:21px;margin-bottom:25px;">
+
+Discussions considered to possess lasting value may, at the discretion of the Institute, be admitted into the Proceedings of Stirling Hunt House.
+
+Proceedings preserve significant conversations for future Fellows and establish an enduring institutional record.
+
+</p>
+
+<div id="proceedings">
+
+<p style="color:#D9CDAA;">
+
+No Proceedings have yet been published.
+
+</p>
 
 </div>
 
-<!-- Supabase -->
+</section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div class="sectionDivider"></div>
 
-<script>
+<!-- Strategic Collections -->
 
-const SUPABASE_URL =
-"https://ayvcbbgtlzxifjxahjul.supabase.co";
+<section class="panel">
 
-const SUPABASE_KEY =
-"sb_publishable_gcRaPoqR2m0_BDTlLzXpDg_MYCyJcvC";
+<h3>
 
-const supabase =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+Strategic Collections
 
-let currentSubject = "";
+</h3>
 
-const discussionList =
-document.getElementById("discussionList");
+<p style="font-size:21px;margin-bottom:30px;">
 
-const status =
-document.getElementById("status");
+Major discussions
 
-const publishBtn =
-document.getElementById("publishBtn");
+    async function checkSession() {
 
-document
-.querySelectorAll(".subject")
-.forEach(button=>{/* ---------- Utilities ---------- */
+    const { data, error } = await supabase.auth.getSession();
 
-function escapeHtml(text){
+    if (error) {
 
-    if(!text) return "";
+        console.error(error);
 
-    return text
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;");
-}
+        window.location.href = "institute.html";
 
-function formatDate(dateString){
-
-    if(!dateString) return "";
-
-    const date = new Date(dateString);
-
-    return date.toLocaleString(undefined,{
-        year:"numeric",
-        month:"long",
-        day:"numeric",
-        hour:"2-digit",
-        minute:"2-digit"
-    });
-
-}
-
-/* ---------- Load Discussions ---------- */
-
-async function loadDiscussions(){
-
-    discussionList.innerHTML = `
-        <div class="loading">
-            Loading discussions...
-        </div>
-    `;
-
-    let query = supabase
-        .from("common_room")
-        .select("*")
-        .order("created_at",{ascending:false});
-
-    if(currentSubject){
-
-        query = query.eq("Subject",currentSubject);
+        return;
 
     }
 
-    const { data,error } = await query;
+    if (!data.session) {
+
+        window.location.href = "institute.html";
+
+        return;
+
+    }
+
+}
+
+checkSession();
+
+async function loadDiscussions() {
+
+    const container =
+    document.getElementById("discussionList");
+
+    container.innerHTML =
+    "<div class='loading'>Loading discussions...</div>";
+
+    const { data, error } =
+    await supabase
+
+    .from("symposium")
+
+    .select("*")
+
+    .order("created_at", { ascending:false });
 
     if(error){
 
         console.error(error);
 
-        discussionList.innerHTML = `
-            <div class="empty">
-                Unable to load the Symposium.
-            </div>
-        `;
+        container.innerHTML =
+
+        "<p>Unable to load discussions.</p>";
 
         return;
 
@@ -616,526 +790,410 @@ async function loadDiscussions(){
 
     if(!data || data.length===0){
 
-        discussionList.innerHTML = `
-            <div class="empty">
+        container.innerHTML =
 
-                The Symposium is presently quiet.
-
-                <br><br>
-
-                Open the Floor and begin the conversation.
-
-            </div>
-        `;
+        "<p>No discussions have yet been opened.</p>";
 
         return;
 
     }
 
-    discussionList.innerHTML="";
+    container.innerHTML="";
 
-    data.forEach(renderDiscussion);
+    data.forEach(post=>{
+
+        const article=document.createElement("div");
+
+        article.className="discussion";
+
+        article.innerHTML=`
+
+        <h3 class="discussionTitle">
+
+        ${post.title}
+
+        </h3>
+
+        <div class="discussionMeta">
+
+        ${post.subject}
+
+        •
+
+        ${post.region || "Global"}
+
+        •
+
+        ${post.status || "Current"}
+
+        </div>
+
+        <div class="discussionText">
+
+        ${post.message}
+
+        </div>
+
+        <button
+        class="button replyButton"
+
+        data-id="${post.id}">
+
+        Converse
+
+        </button>
+
+        <div
+        id="reply-${post.id}"
+
+        style="display:none;margin-top:25px;">
+
+        <textarea
+
+        placeholder="Reply to this discussion..."
+
+        rows="5">
+
+        </textarea>
+
+        <button
+        class="button">
+
+        Submit Reply
+
+        </button>
+
+        </div>
+
+        `;
+
+        container.appendChild(article);
+
+    });
+
+    document
+
+    .querySelectorAll(".replyButton")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",()=>{
+
+            const panel=
+
+            document.getElementById(
+
+            "reply-"+button.dataset.id
+
+            );
+
+            panel.style.display=
+
+            panel.style.display==="block"
+
+            ? "none"
+
+            : "block";
+
+        });
+
+    });
 
 }
-
-/* ---------- Render Discussion ---------- */
-
-function renderDiscussion(post){
-
-    const replies =
-        post.Replies ??
-        post.replies ??
-        0;
-
-    const author =
-        post.Author ??
-        post.author ??
-        "Fellow";
-
-    const created =
-        post.created_at ??
-        post.Created_At ??
-        "";
-
-    const card = document.createElement("div");
-
-    card.className="discussion";
-
-    card.innerHTML = `
-
-        <div class="discussionTitle">
-
-            ${escapeHtml(post.Title || "")}
-
-        </div>
-
-        <div class="meta">
-
-            <div>
-
-                <span class="subjectBadge">
-
-                    ${escapeHtml(post.Subject || "")}
-
-                </span>
-
-            </div>
-
-            <div>
-
-                ${escapeHtml(author)}
-
-                •
-
-                ${formatDate(created)}
-
-            </div>
-
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="discussionBody">
-
-            ${escapeHtml(post.Message || "")}
-
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="discussionFooter">
-
-            <a href="#"
-               class="converse">
-
-                Converse
-
-            </a>
-
-            <div class="replyCount">
-
-                Replies (${replies})
-
-            </div>
-
-        </div>
-
-    `;
-
-    discussionList.appendChild(card);
-
-}
-
-button.onclick=()=>{
-
-document
-.querySelectorAll(".subject")
-.forEach(s=>s.classList.remove("active"));
-
-button.classList.add("active");
-
-currentSubject =
-button.dataset.subject;
 
 loadDiscussions();
 
-};
+const publishButton =
+document.getElementById("publishBtn");
 
-});
+publishButton.addEventListener(
 
-publishBtn.onclick = publishDiscussion;
+"click",
 
-/* ---------- Utilities ---------- */
+publishDiscussion
 
-function escapeHtml(text){
-
-    if(!text) return "";
-
-    return text
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;");
-}
-
-function formatDate(dateString){
-
-    if(!dateString) return "";
-
-    const date = new Date(dateString);
-
-    return date.toLocaleString(undefined,{
-        year:"numeric",
-        month:"long",
-        day:"numeric",
-        hour:"2-digit",
-        minute:"2-digit"
-    });
-
-}
-
-/* ---------- Load Discussions ---------- */
-
-async function loadDiscussions(){
-
-    discussionList.innerHTML = `
-        <div class="loading">
-            Loading discussions...
-        </div>
-    `;
-
-    let query = supabase
-        .from("common_room")
-        .select("*")
-        .order("created_at",{ascending:false});
-
-    if(currentSubject){
-
-        query = query.eq("Subject",currentSubject);
-
-    }
-
-    const { data,error } = await query;
-
-    if(error){
-
-        console.error(error);
-
-        discussionList.innerHTML = `
-            <div class="empty">
-                Unable to load the Symposium.
-            </div>
-        `;
-
-        return;
-
-    }
-
-    if(!data || data.length===0){
-
-        discussionList.innerHTML = `
-            <div class="empty">
-
-                The Symposium is presently quiet.
-
-                <br><br>
-
-                Open the Floor and begin the conversation.
-
-            </div>
-        `;
-
-        return;
-
-    }
-
-    discussionList.innerHTML="";
-
-    data.forEach(renderDiscussion);
-
-}
-
-/* ---------- Render Discussion ---------- */
-
-function renderDiscussion(post){
-
-    const replies =
-        post.Replies ??
-        post.replies ??
-        0;
-
-    const author =
-        post.Author ??
-        post.author ??
-        "Fellow";
-
-    const created =
-        post.created_at ??
-        post.Created_At ??
-        "";
-
-    const card = document.createElement("div");
-
-    card.className="discussion";
-
-    card.innerHTML = `
-
-        <div class="discussionTitle">
-
-            ${escapeHtml(post.Title || "")}
-
-        </div>
-
-        <div class="meta">
-
-            <div>
-
-                <span class="subjectBadge">
-
-                    ${escapeHtml(post.Subject || "")}
-
-                </span>
-
-            </div>
-
-            <div>
-
-                ${escapeHtml(author)}
-
-                •
-
-                ${formatDate(created)}
-
-            </div>
-
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="discussionBody">
-
-            ${escapeHtml(post.Message || "")}
-
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="discussionFooter">
-
-            <a href="#"
-               class="converse">
-
-                Converse
-
-            </a>
-
-            <div class="replyCount">
-
-                Replies (${replies})
-
-            </div>
-
-        </div>
-
-    `;
-
-    discussionList.appendChild(card);
-
-}
-
-/* ---------- Publish Discussion ---------- */
+);
 
 async function publishDiscussion(){
 
-    status.textContent = "";
+    const title=
+    document.getElementById("title").value.trim();
 
-    const title =
-        document.getElementById("title").value.trim();
+    const subject=
+    document.getElementById("subject").value;
 
-    const subject =
-        document.getElementById("subject").value;
+    const region=
+    document.getElementById("region").value;
 
-    const messageText =
-        document.getElementById("message").value.trim();
+    const status=
+    document.getElementById("status").value;
 
-    if(title===""){
+    const message=
+    document.getElementById("message").value.trim();
 
-        status.textContent =
-        "Please enter a discussion title.";
+    if(
 
-        return;
+        !title ||
 
-    }
+        !subject ||
 
-    if(subject===""){
+        !message
 
-        status.textContent =
-        "Please choose a subject.";
+    ){
 
-        return;
+        alert(
 
-    }
+        "Please complete the required fields."
 
-    if(messageText===""){
-
-        status.textContent =
-        "Please write your discussion.";
+        );
 
         return;
 
     }
 
-    publishBtn.disabled = true;
-    publishBtn.textContent = "Publishing...";
+    publishButton.disabled=true;
 
-    const payload={
+    publishButton.textContent=
 
-        Title:title,
-        Subject:subject,
-        Message:messageText,
+    "Opening Floor...";
 
-        Replies:0,
+    const {
 
-        created_at:
-            new Date().toISOString()
+        error
 
-    };
+    } = await supabase
 
-    const {error}=await supabase
-        .from("common_room")
-        .insert(payload);
+    .from("symposium")
 
-    publishBtn.disabled=false;
-    publishBtn.textContent="Publish Discussion";
+    .insert([{
+
+        title,
+
+        subject,
+
+        region,
+
+        status,
+
+        message
+
+    }]);
+
+    publishButton.disabled=false;
+
+    publishButton.textContent=
+
+    "Open the Floor";
 
     if(error){
 
         console.error(error);
 
-        status.textContent=
-        "Unable to publish discussion.";
+        alert(error.message);
 
         return;
 
     }
 
-    status.textContent=
-    "Discussion successfully published.";
-
     document.getElementById("title").value="";
-    document.getElementById("subject").value="";
+
     document.getElementById("message").value="";
+
+    document.getElementById("subject").selectedIndex=0;
+
+    document.getElementById("region").selectedIndex=0;
+
+    document.getElementById("status").selectedIndex=0;
 
     loadDiscussions();
 
 }
 
-/* ---------- Reply Foundation ---------- */
+/* ---------- Search ---------- */
 
-function openReplies(discussionId){
+const searchBox =
+document.getElementById("search");
 
-    console.log(
-        "Replies for discussion:",
-        discussionId
+searchBox.addEventListener("input", function(){
+
+    const search =
+    this.value.toLowerCase();
+
+    document
+    .querySelectorAll(".discussion")
+    .forEach(card=>{
+
+        card.style.display =
+
+        card.innerText
+        .toLowerCase()
+        .includes(search)
+
+        ? "block"
+
+        : "none";
+
+    });
+
+});
+
+/* ---------- Subject Filter ---------- */
+
+document
+.querySelectorAll(".filterGrid .filterCard")
+
+.forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        const filter =
+        card.innerText.toLowerCase();
+
+        document
+        .querySelectorAll(".discussion")
+
+        .forEach(post=>{
+
+            const meta =
+            post.querySelector(".discussionMeta")
+            .innerText
+            .toLowerCase();
+
+            if(
+
+                filter==="all"
+
+            ){
+
+                post.style.display="block";
+
+            }
+
+            else{
+
+                post.style.display=
+
+                meta.includes(filter)
+
+                ? "block"
+
+                : "none";
+
+            }
+
+        });
+
+    });
+
+});
+
+/* ---------- Active Conversations ---------- */
+
+async function loadActiveConversations(){
+
+    const container =
+    document.getElementById(
+    "activeDiscussions"
     );
 
-    /*
-        Reserved for Symposium v3
+    const {
 
-        replies table
+        data,
+        error
 
-        reply count
+    } = await supabase
 
-        threaded conversations
+    .from("symposium")
 
-        Whisper integration
+    .select("*")
 
-    */
+    .order("created_at",
+    {ascending:false})
 
-}
+    .limit(5);
 
-/* ---------- Future-proof rendering ---------- */
+    if(error){
 
-function value(post,...names){
+        container.innerHTML=
 
-    for(const n of names){
+        "<p>Unable to load conversations.</p>";
 
-        if(post[n]!==undefined && post[n]!==null){
-
-            return post[n];
-
-        }
+        return;
 
     }
 
-    return "";
+    container.innerHTML="";
+
+    data.forEach(post=>{
+
+        container.innerHTML +=
+
+        `
+        <div class="discussion">
+
+        <h4
+        style="color:#D4AF37;">
+
+        ${post.title}
+
+        </h4>
+
+        <p>
+
+        ${post.subject}
+
+        •
+
+        ${post.region || "Global"}
+
+        </p>
+
+        </div>
+        `;
+
+    });
 
 }
 
-/* ---------- Last Active ---------- */
+loadActiveConversations();
 
-function updateLastActive() {
+/* ---------- Future Hooks ---------- */
 
-    const now = new Date();
+// Situation Room
 
-    const options = {
-        hour: "2-digit",
-        minute: "2-digit"
-    };
+function loadSituationRoom(){
 
-    return "Today " + now.toLocaleTimeString([], options);
+console.log(
+
+"Situation Room ready."
+
+);
 
 }
 
-/* ---------- Initialise ---------- */
+// Proceedings
 
-document.addEventListener("DOMContentLoaded", async () => {
+function loadProceedings(){
 
-    status.textContent = "";
+console.log(
 
-    await loadDiscussions();
+"Proceedings ready."
 
-});
+);
 
-/* ---------- Refresh every 30 seconds ---------- */
+}
 
-setInterval(loadDiscussions,30000);
+// Strategic Collections
 
-/* ---------- Future Features ---------- */
+function loadCollections(){
 
-/*
+console.log(
 
-Symposium Version 3 Roadmap
+"Collections ready."
 
-✓ Threaded Replies
+);
 
-✓ Fellow Profiles
-
-✓ Mention another Fellow
-
-✓ Notifications
-
-✓ Like / Endorse Discussion
-
-✓ Pin Important Discussions
-
-✓ Moderation Panel
-
-✓ Whisper Integration
-
-✓ Search Discussions
-
-✓ Sort by:
-
-    - Latest
-
-    - Most Active
-
-    - Subject
-
-    - Author
-
-✓ Rich Text Editor
-
-✓ Attachments
-
-✓ Draft Discussions
-
-*/
-
-/* ---------- Update Discussion Footer ---------- */
-
-document.addEventListener("click", function(e){
-
-    if(e.target.classList.contains("converse")){
-
-        e.preventDefault();
-
-        alert("Replies will be enabled in a future update.");
-
-    }
-
-});
+}
 
 </script>
 

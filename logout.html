@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,52 +11,62 @@
 <link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
 
 <body>
 
 <header class="hero">
-    <h1>Signing Out...</h1>
-    <p class="subtitle">
-        Please wait while your secure session is ended.
-    </p>
+
+<h1>Signing Out...</h1>
+
+<p class="subtitle">
+Please wait while your secure session is ended.
+</p>
+
 </header>
 
 <script>
+
 const supabase = window.supabase.createClient(
-    "https://ayvcbbgtlzxifjxahjul.supabase.co",
-    "sb_publishable_rrOHc1sQEbF2B99zbBbLSg_c9if1TXv"
+
+"https://ayvcbbgtlzxifjxahjul.supabase.co",
+
+"sb_publishable_gcRaPoqR2m0_BDTlLzXpDg_MYCyJcvC"
+
 );
 
 async function logout() {
 
     try {
 
-        // Sign the user out
         await supabase.auth.signOut();
 
-        // Clear any cached auth data
         localStorage.clear();
         sessionStorage.clear();
 
-        // Prevent the browser back button restoring the page
-        history.replaceState(null, "", "login.html");
+        history.replaceState(null, "", "institute.html");
 
-        // Go back to login page
-        window.location.replace("login.html");
+        window.location.replace("institute.html");
 
-    } catch (err) {
+    }
+
+    catch(err){
 
         console.error(err);
 
-        alert("Unable to sign out. Please try again.");
+        alert("Unable to sign out.");
 
-        window.location.replace("login.html");
+        window.location.replace("institute.html");
+
     }
+
 }
 
 logout();
+
 </script>
 
 </body>
+
 </html>

@@ -4,17 +4,30 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Fellows' Portal | Stirling Hunt House</title>
 
 <link rel="stylesheet" href="style.css">
 
+<!-- Debugging (remove later) -->
+
 <script>
+
 alert("JavaScript is running");
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+alert(typeof window.supabase);
+
+</script>
+
 </head>
 
 <body>
@@ -22,13 +35,32 @@ alert("JavaScript is running");
 <nav>
 
 <div class="logo-text">
+
 STIRLING HUNT HOUSE
+
 </div>
 
 <ul>
 
-<li><a href="index.html">Home</a></li>
-<li><a href="publications.html">Journal</a></li>
+<li>
+
+<a href="index.html">
+
+Home
+
+</a>
+
+</li>
+
+<li>
+
+<a href="publications.html">
+
+Journal
+
+</a>
+
+</li>
 
 </ul>
 
@@ -36,39 +68,93 @@ STIRLING HUNT HOUSE
 
 <header class="hero">
 
-<h1>FELLOWS' PORTAL</h1>
+<h1>
 
-<h2>Stirling Hunt House</h2>
+FELLOWS' PORTAL
+
+</h1>
+
+<h2>
+
+Stirling Hunt House
+
+</h2>
 
 <p class="subtitle">
+
 Access is restricted to Fellows of the Society.
+
 </p>
 
 <input
+
 type="email"
+
 id="email"
-placeholder="Email address">
+
+placeholder="Email Address"
+
+autocomplete="email">
 
 <br><br>
 
 <input
-type="password"
-id="password"
-placeholder="Password">
 
-<br><br>
+type="password"
+
+id="password"
+
+placeholder="Password"
+
+autocomplete="current-password">
+
+<br>
+
+<label style="display:block;margin-top:10px;cursor:pointer;">
+
+<input
+
+type="checkbox"
+
+id="showPassword">
+
+ Show Password
+
+</label>
+
+<br>
 
 <button
+
 class="button"
+
 id="loginButton">
 
 Sign In
 
 </button>
 
-<p id="message"></p>
+<p
 
-</header>
+id="message"
+
+style="margin-top:20px;color:#D4AF37;">
+
+</p>
+
+<p style="margin-top:25px;">
+
+<a
+
+href="#"
+
+id="forgotPassword">
+
+Forgotten your password?
+
+</a>
+
+</p>
 
 <script>
 
@@ -90,78 +176,180 @@ document.getElementById("loginButton");
 const message =
 document.getElementById("message");
 
-loginButton.addEventListener("click", signIn);
+const password =
+document.getElementById("password");
 
-async function signIn(){
+const showPassword =
+document.getElementById("showPassword");
 
-    message.textContent="";
+/* ---------- Show Password ---------- */
 
-    const email =
-    document.getElementById("email").value.trim();
+showPassword.addEventListener("change",()=>{
 
-    const password =
-    document.getElementById("password").value;
+password.type =
+showPassword.checked
+? "text"
+: "password";
 
-    if(email==="" || password===""){
+});
 
-        alert("Please enter your email and password.");
+/* ---------- Forgotten Password ---------- */
 
-        message.textContent=
-        "Please enter your email and password.";
+document
+.getElementById("forgotPassword")
+.addEventListener("click",async(e)=>{
 
-        return;
+e.preventDefault();
 
-    }
+const email =
+document.getElementById("email")
+.value
+.trim();
 
-    loginButton.disabled=true;
-    loginButton.textContent="Signing In...";
+if(email===""){
 
-    try{
+alert(
+"Please enter your email address
 
-        const {data,error}=await supabase.auth.signInWithPassword({
+/* ---------- Time Greeting ---------- */
 
-            email:email,
-            password:password
+const greeting =
+document.createElement("p");
 
-        });
+greeting.style.marginTop = "30px";
+greeting.style.fontStyle = "italic";
+greeting.style.color = "#D4AF37";
+greeting.style.fontSize = "20px";
 
-        console.log("DATA:",data);
-        console.log("ERROR:",error);
+const hour = new Date().getHours();
 
-        if(error){
+if(hour < 12){
 
-            alert(error.message);
-
-            message.textContent=error.message;
-
-            loginButton.disabled=false;
-            loginButton.textContent="Sign In";
-
-            return;
-
-        }
-
-        alert("Login successful.");
-
-        window.location.href="portal.html";
-
-    }
-
-    catch(err){
-
-        console.error(err);
-
-        alert(err.message);
-
-        message.textContent=
-        "Unable to connect to Stirling Hunt House.";
-
-        loginButton.disabled=false;
-        loginButton.textContent="Sign In";
-
-    }
+greeting.textContent =
+"Good Morning, Fellow.";
 
 }
+
+else if(hour < 18){
+
+greeting.textContent =
+"Good Afternoon, Fellow.";
+
+}
+
+else{
+
+greeting.textContent =
+"Good Evening, Fellow.";
+
+}
+
+document
+.querySelector(".hero")
+.appendChild(greeting);
+
+
+/* ---------- Rotating Institute Quotations ---------- */
+
+const quotations = [
+
+"Truth emerges through disciplined inquiry.",
+
+"Knowledge shared with integrity strengthens the Fellowship.",
+
+"Civilisation advances through thoughtful discourse.",
+
+"Wisdom begins where certainty ends.",
+
+"Veritatem Quaerere.",
+
+"Reason before certainty.",
+
+"Scholarship in service of society.",
+
+"Question deeply. Conclude carefully."
+
+];
+
+const quote =
+document.createElement("p");
+
+quote.style.marginTop = "18px";
+quote.style.color = "#D9CDAA";
+quote.style.fontStyle = "italic";
+quote.style.fontSize = "18px";
+quote.style.transition = "opacity .8s";
+
+document
+.querySelector(".hero")
+.appendChild(quote);
+
+let quoteIndex = 0;
+
+function rotateQuote(){
+
+quote.style.opacity = 0;
+
+setTimeout(()=>{
+
+quote.textContent =
+quotations[quoteIndex];
+
+quote.style.opacity = 1;
+
+quoteIndex++;
+
+if(quoteIndex>=quotations.length){
+
+quoteIndex = 0;
+
+}
+
+},500);
+
+}
+
+rotateQuote();
+
+setInterval(
+rotateQuote,
+7000
+);
+
+
+/* ---------- Authentication Status ---------- */
+
+const status =
+document.createElement("p");
+
+status.id = "status";
+
+status.style.marginTop = "25px";
+status.style.color = "#D4AF37";
+status.style.fontSize = "18px";
+
+status.textContent =
+"Ready for authentication.";
+
+document
+.querySelector(".hero")
+.appendChild(status);
+
+
+/* ---------- Institute Security Notice ---------- */
+
+const security =
+document.createElement("p");
+
+security.style.marginTop = "50px";
+security.style.fontSize = "15px";
+security.style.color = "#999";
+security.style.textAlign = "center";
+
+security.textContent =
+"Authorised Fellows only • All access is logged.";
+
+document.body.appendChild(security);
 
 </script>
 

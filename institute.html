@@ -248,13 +248,17 @@ rotateQuote,
 
 /* ---------- Show Password ---------- */
 
-document
-.getElementById("showPassword")
-.addEventListener("change",function(){
+const showPassword =
+document.getElementById("showPassword");
 
-document
-.getElementById("password")
-.type = this.checked ? "text" : "password";
+alert("Checkbox found: " + (showPassword !== null));
+
+showPassword.addEventListener("change",function(){
+
+alert("Checkbox clicked");
+
+document.getElementById("password").type =
+this.checked ? "text" : "password";
 
 });
 

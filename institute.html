@@ -5,14 +5,13 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Fellows' Portal | Stirling Hunt House</title>
 
 <link rel="stylesheet" href="style.css">
 
-<!-- Debugging (remove later) -->
+<!-- Temporary debugging -->
 
 <script>
 
@@ -43,23 +42,15 @@ STIRLING HUNT HOUSE
 <ul>
 
 <li>
-
 <a href="index.html">
-
 Home
-
 </a>
-
 </li>
 
 <li>
-
 <a href="publications.html">
-
 Journal
-
 </a>
-
 </li>
 
 </ul>
@@ -86,6 +77,12 @@ Access is restricted to Fellows of the Society.
 
 </p>
 
+<div id="greeting"></div>
+
+<div id="quotation"></div>
+
+<br>
+
 <input
 
 type="email"
@@ -110,12 +107,10 @@ autocomplete="current-password">
 
 <br>
 
-<label style="display:block;margin-top:10px;cursor:pointer;">
+<label style="display:block;margin-top:12px;cursor:pointer;">
 
 <input
-
 type="checkbox"
-
 id="showPassword">
 
  Show Password
@@ -134,27 +129,20 @@ Sign In
 
 </button>
 
-<p
+<p id="message"></p>
 
-id="message"
+<p style="margin-top:20px;">
 
-style="margin-top:20px;color:#D4AF37;">
-
-</p>
-
-<p style="margin-top:25px;">
-
-<a
-
-href="#"
-
-id="forgotPassword">
+<a href="#" id="forgotPassword">
 
 Forgotten your password?
 
 </a>
 
 </p>
+
+<div id="status"></div>
+
 
 <script>
 
@@ -176,82 +164,39 @@ document.getElementById("loginButton");
 const message =
 document.getElementById("message");
 
-const password =
-document.getElementById("password");
-
-const showPassword =
-document.getElementById("showPassword");
-
-/* ---------- Show Password ---------- */
-
-showPassword.addEventListener("change",()=>{
-
-password.type =
-showPassword.checked
-? "text"
-: "password";
-
-});
-
-/* ---------- Forgotten Password ---------- */
-
-document
-.getElementById("forgotPassword")
-.addEventListener("click",async(e)=>{
-
-e.preventDefault();
-
-const email =
-document.getElementById("email")
-.value
-.trim();
-
-if(email===""){
-
-alert(
-"Please enter your email address
-
-/* ---------- Time Greeting ---------- */
+const status =
+document.getElementById("status");
 
 const greeting =
-document.createElement("p");
+document.getElementById("greeting");
 
-greeting.style.marginTop = "30px";
-greeting.style.fontStyle = "italic";
-greeting.style.color = "#D4AF37";
-greeting.style.fontSize = "20px";
+const quotation =
+document.getElementById("quotation");
+
+/* ---------- Greeting ---------- */
 
 const hour = new Date().getHours();
 
 if(hour < 12){
 
-greeting.textContent =
-"Good Morning, Fellow.";
+greeting.innerHTML =
+"<p style='color:#D4AF37;font-style:italic;'>Good Morning, Fellow.</p>";
+
+}else if(hour < 18){
+
+greeting.innerHTML =
+"<p style='color:#D4AF37;font-style:italic;'>Good Afternoon, Fellow.</p>";
+
+}else{
+
+greeting.innerHTML =
+"<p style='color:#D4AF37;font-style:italic;'>Good Evening, Fellow.</p>";
 
 }
 
-else if(hour < 18){
+/* ---------- Rotating Quotations ---------- */
 
-greeting.textContent =
-"Good Afternoon, Fellow.";
-
-}
-
-else{
-
-greeting.textContent =
-"Good Evening, Fellow.";
-
-}
-
-document
-.querySelector(".hero")
-.appendChild(greeting);
-
-
-/* ---------- Rotating Institute Quotations ---------- */
-
-const quotations = [
+const quotes = [
 
 "Truth emerges through disciplined inquiry.",
 
@@ -261,51 +206,35 @@ const quotations = [
 
 "Wisdom begins where certainty ends.",
 
-"Veritatem Quaerere.",
+"Scholarship in service of society.",
 
 "Reason before certainty.",
 
-"Scholarship in service of society.",
+"Question deeply. Conclude carefully.",
 
-"Question deeply. Conclude carefully."
+"Veritatem Quaerere."
 
 ];
-
-const quote =
-document.createElement("p");
-
-quote.style.marginTop = "18px";
-quote.style.color = "#D9CDAA";
-quote.style.fontStyle = "italic";
-quote.style.fontSize = "18px";
-quote.style.transition = "opacity .8s";
-
-document
-.querySelector(".hero")
-.appendChild(quote);
 
 let quoteIndex = 0;
 
 function rotateQuote(){
 
-quote.style.opacity = 0;
+quotation.innerHTML =
 
-setTimeout(()=>{
+"<p style='font-style:italic;color:#D9CDAA;margin-bottom:20px;'>"
 
-quote.textContent =
-quotations[quoteIndex];
++ quotes[quoteIndex] +
 
-quote.style.opacity = 1;
+"</p>";
 
 quoteIndex++;
 
-if(quoteIndex>=quotations.length){
+if(quoteIndex >= quotes.length){
 
 quoteIndex = 0;
 
 }
-
-},500);
 
 }
 
@@ -316,35 +245,179 @@ rotateQuote,
 7000
 );
 
-
-/* ---------- Authentication Status ---------- */
-
-const status =
-document.createElement("p");
-
-status.id = "status";
-
-status.style.marginTop = "25px";
-status.style.color = "#D4AF37";
-status.style.fontSize = "18px";
-
-status.textContent =
-"Ready for authentication.";
+/* ---------- Show Password ---------- */
 
 document
-.querySelector(".hero")
-.appendChild(status);
+.getElementById("showPassword")
+.addEventListener("change",function(){
 
+document
+.getElementById("password")
+.type = this.checked ? "text" : "password";
 
-/* ---------- Institute Security Notice ---------- */
+});
+
+/* ---------- Forgotten Password ---------- */
+
+document
+.getElementById("forgotPassword")
+.addEventListener("click",async function(e){
+
+e.preventDefault();
+
+const email =
+document
+.getElementById("email")
+.value
+.trim();
+
+if(email===""){
+
+alert(
+"Please enter your email address first."
+);
+
+return;
+
+}
+
+const { error } =
+
+await supabase
+.auth
+.resetPasswordForEmail(email,{
+
+redirectTo:
+"https://hamesjarris989-source.github.io/Stirling-Hunt-House/reset-password.html"
+
+});
+
+if(error){
+
+alert(error.message);
+
+}else{
+
+alert(
+"If an account exists, a password reset email has been sent."
+);
+
+}
+
+});
+
+/* ---------- Login ---------- */
+
+loginButton.addEventListener(
+"click",
+signIn
+);
+
+async function signIn(){
+
+message.textContent = "";
+
+status.textContent =
+"Authenticating Fellow...";
+
+const email =
+document
+.getElementById("email")
+.value
+.trim();
+
+const password =
+document
+.getElementById("password")
+.value;
+
+if(email==="" || password===""){
+
+alert(
+"Please enter your email and password."
+);
+
+message.textContent =
+"Please enter your email and password.";
+
+status.textContent = "";
+
+return;
+
+}
+
+loginButton.disabled = true;
+
+loginButton.textContent =
+"Signing In...";
+
+        try{
+
+            const { data, error } =
+            await supabase.auth.signInWithPassword({
+
+                email: email,
+                password: password
+
+            });
+
+            console.log("DATA:", data);
+            console.log("ERROR:", error);
+
+            if(error){
+
+                alert(error.message);
+
+                message.textContent = error.message;
+
+                status.textContent = "Authentication failed.";
+
+                loginButton.disabled = false;
+
+                loginButton.textContent = "Sign In";
+
+                return;
+
+            }
+
+            status.textContent =
+            "Authentication successful.";
+
+            alert("Welcome, Fellow.");
+
+            window.location.href = "portal.html";
+
+        }
+
+        catch(err){
+
+            console.error(err);
+
+            alert(err.message);
+
+            message.textContent =
+            "Unable to connect to Stirling Hunt House.";
+
+            status.textContent =
+            "Unable to contact authentication server.";
+
+            loginButton.disabled = false;
+
+            loginButton.textContent = "Sign In";
+
+        }
+
+}
+
+/* ---------- Security Notice ---------- */
 
 const security =
 document.createElement("p");
 
-security.style.marginTop = "50px";
-security.style.fontSize = "15px";
-security.style.color = "#999";
+security.style.marginTop = "60px";
 security.style.textAlign = "center";
+security.style.color = "#AFA58A";
+security.style.fontSize = "15px";
 
 security.textContent =
 "Authorised Fellows only • All access is logged.";

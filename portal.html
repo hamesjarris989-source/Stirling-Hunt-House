@@ -82,49 +82,56 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_gcRaPoqR2m0_BDTlLzXpDg_MYCyJcvC";
 
-const supabase = window.supabase.createClient(
+const supabase =
+window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
 
+alert("✓ Supabase client created");
+
 async function checkUser() {
 
-    const { data, error } = await supabase.auth.getSession();
+    alert("Checking session...");
+
+    const { data, error } =
+    await supabase.auth.getSession();
+
+    console.log("Session data:", data);
+    console.log("Session error:", error);
 
     if (error) {
+
+        alert("Session error:");
+        alert(error.message);
+
         console.error(error);
+
         window.location.href = "institute.html";
+
         return;
+
     }
 
     if (!data.session) {
+
+        alert("No active session found.");
+
         window.location.href = "institute.html";
+
         return;
+
     }
+
+    alert("✓ Active session found");
+
+    console.log(data.session);
 
 }
 
 checkUser();
 
 </script>
-
-</body>
-
-</html>
-    if (!data.session) {
-        window.location.href = "institute.html";
-        return;
-    }
-
-}
-
-checkUser();
-
-</script>
-
-</body>
-
-</html></script>
 
 </body>
 
